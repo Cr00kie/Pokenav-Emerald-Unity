@@ -1,0 +1,56 @@
+{
+  "pokemons": [
+    {
+      "key": "rayquaza",
+      "name": "Rayquaza",
+      "level": 75,
+      "imgFileName": "rayquaza",
+      "stats": {
+        "cool": 0.7,
+        "tough": 0.1,
+        "beauty": 0.2,
+        "smart": 0.6,
+        "cute": 0.8
+      }
+    },
+    {
+      "key": "pidgeot",
+      "name": "Pidgeot",
+      "level": 25,
+      "imgFileName": "pidgeot",
+      "stats": {
+        "cool": 0.3,
+        "tough": 0.12,
+        "beauty": 0.3,
+        "smart": 0.4,
+        "cute": 0.1
+      }
+    },
+    {
+      "key": "gligar",
+      "name": "Gligar",
+      "level": 23,
+      "imgFileName": "gligar",
+      "stats": {
+        "cool": 0.2,
+        "tough": 0.6,
+        "beauty": 0.8,
+        "smart": 0.1,
+        "cute": 0.5
+      }
+    },
+    {
+      "key": "treecko",
+      "name": "Treecko",
+      "level": 34,
+      "imgFileName": "treecko",
+      "stats": {
+        "cool": 0.8,
+        "tough": 0.11,
+        "beauty": 0.1,
+        "smart": 0.4,
+        "cute": 0.8
+      }
+    }
+  ]
+}
