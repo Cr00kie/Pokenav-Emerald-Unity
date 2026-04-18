@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Menus/pokenav-stylesheet.uss?fileID=7433441132597879392&amp;guid=23b4a9aa1b545e94ca802a1e9914e75b&amp;type=3#pokenav-stylesheet" />
+    <ui:VisualElement name="Base" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/PokemonPartyBackground.png?fileID=21300000&amp;guid=c4edcbc933eed694ea3fb15dc2e2e0cf&amp;type=3#PokemonPartyBackground&quot;);">
+        <ui:VisualElement name="Body" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="TitleAndImage" style="flex-grow: 1;">
+                <ui:VisualElement name="Title" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/MenuTitleBox.png?fileID=21300000&amp;guid=878d774d4266af64f9f111fc58c16339&amp;type=3#MenuTitleBox&quot;); margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 130px; max-height: 130px; min-height: 130px; justify-content: flex-end; align-items: center; -unity-text-align: upper-left; -unity-background-image-tint-color: rgb(103, 99, 226);">
+                    <ui:Label tabindex="-1" text="CONDITION" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleText" style="justify-content: flex-start; align-items: auto; align-self: center; color: rgb(255, 255, 255); font-size: 60px; -unity-text-align: middle-center; -unity-font-style: bold; margin-bottom: 4px; margin-left: 4px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: ellipsis;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Subtitle" style="flex-grow: 2; background-image: url(&quot;project://database/Assets/Art/MenuTitleBox.png?fileID=21300000&amp;guid=878d774d4266af64f9f111fc58c16339&amp;type=3#MenuTitleBox&quot;); flex-shrink: 1; padding-bottom: 0; width: 502px; margin-bottom: 100px; -unity-text-align: upper-left; justify-content: center; align-items: stretch; align-self: flex-start; height: 13px; -unity-background-image-tint-color: rgb(103, 99, 226);">
+                    <ui:Label tabindex="-1" text="Party Pokémon" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SubtitleText" style="justify-content: flex-start; align-items: auto; align-self: flex-start; color: rgb(255, 255, 255); font-size: 40px; -unity-text-align: middle-left; -unity-font-style: bold; margin-bottom: 4px; margin-left: 20px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; text-overflow: ellipsis;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ImageBox" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/PokemonPartyRightSideTransparentBox.png?fileID=21300000&amp;guid=f5a7cc3c62807fd45a514447521e5013&amp;type=3#PokemonPartyRightSideTransparentBox&quot;); margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;">
+                    <ui:VisualElement name="PokemonImage" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Resources/PokemonIMG/rayquaza.png?fileID=21300000&amp;guid=2b849df77b28ebb4e8d8a16a53cb2a3f&amp;type=3#rayquaza&quot;); width: 400px; height: 400px; max-height: 400px; min-height: 400px; min-width: 400px; max-width: 400px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PokemonStats" style="flex-grow: 1; width: 880px; max-width: 880px; min-width: 880px;">
+                <ui:VisualElement name="Box" style="flex-grow: 2; background-image: url(&quot;project://database/Assets/Art/PokemonPartyTransparentBox.png?fileID=21300000&amp;guid=7857a745425393543b69b6e2cee7c09e&amp;type=3#PokemonPartyTransparentBox&quot;); flex-shrink: 1; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px;">
+                    <ui:VisualElement name="PokemonNameAndLevel" style="flex-grow: 1; flex-direction: row; justify-content: space-between; flex-shrink: 1; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+                        <ui:Label tabindex="-1" text="Rayquaza" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PokemonName" style="font-size: 60px; color: rgb(93, 93, 93); -unity-font-style: bold;" />
+                        <ui:Label tabindex="-1" text="Lv 75" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PokemonLevel" style="font-size: 60px; color: rgb(93, 93, 93); -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PokemonStatRadar" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/StatRadar.png?fileID=21300000&amp;guid=722375619fabe864caf6342f2394fed9&amp;type=3#StatRadar&quot;); max-height: 620px; min-height: 620px; max-width: 880px; min-width: 880px; align-items: stretch; align-self: center;">
+                        <RadarChart Cool="0.47" Beauty="0.59" Cute="0" Smart="0.18" name="RadarChart" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PokemonSelector" style="flex-grow: 0; align-self: auto; align-items: center; flex-shrink: 0; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px;">
+                <ui:VisualElement name="Exit" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/ExitIcon.png?fileID=21300000&amp;guid=c67132bc609c5964f823b24ce218da91&amp;type=3#ExitIcon&quot;); width: 110px; height: 110px; max-height: 110px; min-height: 110px; max-width: 110px; min-width: 110px; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Footer.png?fileID=21300000&amp;guid=fdc17d7387e91624c89ee082b126750f&amp;type=3#Footer&quot;); height: auto; max-height: 120px; min-height: 120px;" />
+    </ui:VisualElement>
+</ui:UXML>
