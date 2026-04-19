@@ -28,3 +28,68 @@
     transition-property: all;
     transition-duration: 300ms;
 }
+
+.menu-button {
+    position: relative;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    width: 900px; /* normal sin hover */
+    height: 112px;
+    min-height: 112px;
+    max-height: 112px;
+
+    margin-top: 12px;
+    margin-right: 0;
+    margin-bottom: 12px;
+    margin-left: 12px;
+
+    padding-top: 0;
+    padding-right: 66px;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    justify-content: flex-end;
+    align-items: center;
+    -unity-text-align: upper-left;
+
+    transition-property: left, width, opacity, -unity-background-image-tint-color;
+    transition-duration: 140ms;
+
+    left: 0;
+}
+
+.menu-button:hover {
+    left: -70px;
+    width: 970px; /* 900 + 70 */
+}
+
+.menu-button-blink-a {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 1);
+    opacity: 1;
+}
+
+.menu-button-blink-b {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.45);
+    opacity: 0.55;
+}
+
+.menu-button-label {
+    color: rgb(255, 255, 255);
+    font-size: 56px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+
+    margin-top: 10px;
+    margin-bottom: 4px;
+    margin-left: 65px;
+
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    text-overflow: ellipsis;
+    align-self: flex-start;
+}
