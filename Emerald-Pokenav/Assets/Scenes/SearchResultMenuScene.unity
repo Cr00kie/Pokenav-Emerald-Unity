@@ -224,7 +224,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1477672419}
   - component: {fileID: 1477672418}
-  - component: {fileID: 1477672421}
   - component: {fileID: 1477672420}
   m_Layer: 5
   m_Name: UIDocument
@@ -247,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 2f5c693c897f4fc4d969c222d1c3e597, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 4e40d724504e0b04699695363d4b5499, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 6ce0d80cb5a11c6478d145da7fcf6027, type: 3}
   m_SortingOrder: 0
 --- !u!4 &1477672419
 Transform:
@@ -273,71 +272,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1477672416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6c4e312985a98d4bb878711acb6af5b, type: 3}
+  m_Script: {fileID: 11500000, guid: a7d1c9eee37443e45ac2671a8fae81a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuTitle: SEARCH
-  titleBackgroundColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
-  titleTextColor: {r: 1, g: 1, b: 1, a: 1}
-  menuBackgroundImage: {fileID: 21300000, guid: a68f930acbee92d4e835b0810989d945, type: 3}
-  defaultBottomText: Select a button to show its function
-  buttonTemplate: {fileID: 9197481963319205126, guid: 865c479d49f5d284faefec8b59dcd6eb, type: 3}
-  buttons:
-  - buttonText: Cool
-    buttonColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
-    footerHoverText: Find cool POKEMON.
-    sceneToLoad: SearchResultMenuScene
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
-  - buttonText: Beauty
-    buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
-    footerHoverText: Find beauty POKEMON.
-    sceneToLoad: SearchResultMenuScene
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
-  - buttonText: Cute
-    buttonColor: {r: 0.7137255, g: 0.35686275, b: 0.85490197, a: 1}
-    footerHoverText: Find cute POKEMON.
-    sceneToLoad: SearchResultMenuScene
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
-  - buttonText: Smart
-    buttonColor: {r: 0.48235294, g: 0.7411765, b: 0.3647059, a: 1}
-    footerHoverText: Find smart POKEMON.
-    sceneToLoad: SearchResultMenuScene
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
-  - buttonText: Tough
-    buttonColor: {r: 1, g: 0.6745098, b: 0.3254902, a: 1}
-    footerHoverText: Find tough POKEMON.
-    sceneToLoad: SearchResultMenuScene
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
-  - buttonText: Cancel
-    buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
-    footerHoverText: Return to the CONDITION menu.
-    sceneToLoad: SelectMenuScene
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
---- !u!114 &1477672421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477672416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d16d4509b319e140a4fc2aacd237a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  winkSpeed: 0.12
+  defaultSubtitleText: condition
+  defaultSubtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

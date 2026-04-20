@@ -219,6 +219,12 @@ public class SelectMenu : MonoBehaviour
             return;
         }
 
+        // Cuando se hace click en el botón, guardamos su texto y color en MenuNavigationData
+        MenuNavigationData.SetSubtitleData(
+            buttonData.buttonText,
+            buttonData.buttonColor
+        );
+
         // Si el botón tiene una escena asignada, la cargamos.
         if (!string.IsNullOrEmpty(buttonData.sceneToLoad))
         {
