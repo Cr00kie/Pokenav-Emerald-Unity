@@ -286,30 +286,35 @@ MonoBehaviour:
   - buttonText: Hoenn Map
     buttonColor: {r: 0.90943396, g: 0.5405126, b: 0.5405126, a: 1}
     footerHoverText: Check the map oh the HOENN region.
+    sceneToLoad: 
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Condition
     buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
     footerHoverText: Check POKEMON in detail.
+    sceneToLoad: SelectMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Match Call
     buttonColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
     footerHoverText: Call a registered TRAINER.
+    sceneToLoad: 
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Ribbons
     buttonColor: {r: 0.7137255, g: 0.35686275, b: 0.85490197, a: 1}
     footerHoverText: Check obteined RIBBONS.
+    sceneToLoad: 
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Switch off
     buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
     footerHoverText: Put away the POKENAV.
+    sceneToLoad: 
     onClick:
       m_PersistentCalls:
         m_Calls: []

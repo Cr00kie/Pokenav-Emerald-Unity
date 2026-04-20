@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PokemonPartyTestScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SearchMenuScene.unity
+    guid: d4447b2d212caed439664ac5096a45f1
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 94432acc09406b042a6df85f0091bb50
+  - enabled: 1
+    path: Assets/Scenes/SelectMenuScene.unity
+    guid: 8dfac4ddc8c40994697f0dd46319f411
   m_configObjects: {}

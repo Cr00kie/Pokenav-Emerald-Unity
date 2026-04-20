@@ -286,18 +286,21 @@ MonoBehaviour:
   - buttonText: "Party Pok\xE9mon"
     buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
     footerHoverText: Check party POKEMON in detail.
+    sceneToLoad: PokemonPartyTestScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Seach
     buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
     footerHoverText: Check all POKEMON in detail.
+    sceneToLoad: SearchMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Cancel
     buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
     footerHoverText: Return to the POKENAV menu.
+    sceneToLoad: MainMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []

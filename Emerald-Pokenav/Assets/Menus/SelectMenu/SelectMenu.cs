@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class SelectMenu : MonoBehaviour
 {
@@ -218,7 +219,14 @@ public class SelectMenu : MonoBehaviour
             return;
         }
 
-        // Ejecutamos el evento configurado en el Inspector
+        // Si el botón tiene una escena asignada, la cargamos.
+        if (!string.IsNullOrEmpty(buttonData.sceneToLoad))
+        {
+            SceneManager.LoadScene(buttonData.sceneToLoad);
+            return;
+        }
+
+        // Si no tiene escena, ejecutamos el evento normal.
         buttonData.onClick.Invoke();
     }
 
@@ -272,6 +280,10 @@ public class MenuButtonData
     [Header("Footer")]
     [TextArea(2, 4)]
     public string footerHoverText = "Button description";
+
+    [Header("Scene")]
+    //Al pulsar el botón se cargará esta escena.
+    public string sceneToLoad = "";
 
     [Header("Action")]
     public UnityEvent onClick = new UnityEvent();
