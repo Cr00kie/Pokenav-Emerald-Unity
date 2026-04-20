@@ -15,10 +15,11 @@ public class SelectMenu : MonoBehaviour
     // Imagen de fondo del menú completo.
     [SerializeField] private Sprite menuBackgroundImage;
 
-    [Header("Bottom Text Box")]
-    // Texto que aparece en la caja inferior.
+    [Header("Footer")]
+    // Texto por defecto del footer.
+    // Este texto vuelve cuando el ratón deja de estar sobre un botón.
     [TextArea(2, 4)]
-    [SerializeField] private string bottomText = "Check the map of the HOENN region.";
+    [SerializeField] private string defaultBottomText = "Select a button to show its function";
 
     [Header("Buttons")]
     // Template UXML para cada botón.
@@ -132,7 +133,7 @@ public class SelectMenu : MonoBehaviour
         // Aplicamos el texto de la caja inferior
         if (footerLabel != null)
         {
-            footerLabel.text = bottomText;
+            footerLabel.text = defaultBottomText;
         }
     }
 
@@ -186,6 +187,8 @@ public class SelectMenu : MonoBehaviour
 
             // Registramos el click
             buttonRoot.RegisterCallback<ClickEvent>(OnMenuButtonClicked);
+            buttonRoot.RegisterCallback<PointerEnterEvent>(OnMenuButtonPointerEnter);
+            buttonRoot.RegisterCallback<PointerLeaveEvent>(OnMenuButtonPointerLeave);
 
             // Añadimos el botón instanciado al contenedor
             buttonsContainer.Add(buttonInstance);
@@ -218,6 +221,45 @@ public class SelectMenu : MonoBehaviour
         // Ejecutamos el evento configurado en el Inspector
         buttonData.onClick.Invoke();
     }
+
+
+    private void OnMenuButtonPointerEnter(PointerEnterEvent evt)
+    {
+        VisualElement buttonRoot = evt.currentTarget as VisualElement;
+
+        if (buttonRoot == null)
+        {
+            return;
+        }
+
+        MenuButtonData buttonData = buttonRoot.userData as MenuButtonData;
+
+        if (buttonData == null)
+        {
+            return;
+        }
+
+        if (footerLabel == null)
+        {
+            return;
+        }
+
+        // Cuando el ratón entra en el botón,
+        // cambiamos el texto del footer al texto de hover de ese botón.
+        footerLabel.text = buttonData.footerHoverText;
+    }
+
+    private void OnMenuButtonPointerLeave(PointerLeaveEvent evt)
+    {
+        if (footerLabel == null)
+        {
+            return;
+        }
+
+        // Cuando el ratón sale del botón,
+        // restauramos el texto por defecto del footer.
+        footerLabel.text = defaultBottomText;
+    }
 }
 
 [Serializable]
@@ -226,6 +268,10 @@ public class MenuButtonData
     [Header("Visual")]
     public string buttonText = "New Button";
     public Color buttonColor = Color.white;
+
+    [Header("Footer")]
+    [TextArea(2, 4)]
+    public string footerHoverText = "Button description";
 
     [Header("Action")]
     public UnityEvent onClick = new UnityEvent();

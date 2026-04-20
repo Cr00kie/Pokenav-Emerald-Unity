@@ -280,36 +280,42 @@ MonoBehaviour:
   titleBackgroundColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
   titleTextColor: {r: 1, g: 1, b: 1, a: 1}
   menuBackgroundImage: {fileID: 21300000, guid: a68f930acbee92d4e835b0810989d945, type: 3}
-  bottomText: "Check party Pok\xE9mon in detail."
+  defaultBottomText: Select a button to show its function
   buttonTemplate: {fileID: 9197481963319205126, guid: 865c479d49f5d284faefec8b59dcd6eb, type: 3}
   buttons:
   - buttonText: Cool
     buttonColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
+    footerHoverText: Find cool POKEMON.
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Beauty
     buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
+    footerHoverText: Find beauty POKEMON.
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Cute
     buttonColor: {r: 0.7137255, g: 0.35686275, b: 0.85490197, a: 1}
+    footerHoverText: Find cute POKEMON.
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Smart
     buttonColor: {r: 0.48235294, g: 0.7411765, b: 0.3647059, a: 1}
+    footerHoverText: Find smart POKEMON.
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Tough
     buttonColor: {r: 1, g: 0.6745098, b: 0.3254902, a: 1}
+    footerHoverText: Find tough POKEMON.
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Cancel
     buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
+    footerHoverText: Return to the CONDITION menu.
     onClick:
       m_PersistentCalls:
         m_Calls: []
