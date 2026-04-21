@@ -25,7 +25,7 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="PokemonSelector" style="flex-grow: 0; align-self: auto; align-items: center; flex-shrink: 0; margin-top: 1%; margin-right: 1%; margin-bottom: 1%; margin-left: -1%; width: 10%; max-width: 10%; min-width: 10%;">
-                <ui:VisualElement name="Exit" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/ExitIcon.png?fileID=21300000&amp;guid=c67132bc609c5964f823b24ce218da91&amp;type=3#ExitIcon&quot;); width: 80%; height: 12%; max-height: 12%; min-height: 15%; max-width: 80%; min-width: 80%; margin-top: 2%; margin-right: 2%; margin-bottom: 2%; margin-left: 4%;" />
+                <ui:VisualElement name="Exit" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/ExitIcon.png?fileID=21300000&amp;guid=c67132bc609c5964f823b24ce218da91&amp;type=3#ExitIcon&quot;); width: 80%; height: 12%; max-height: 12%; min-height: 12%; max-width: 80%; min-width: 80%; margin-top: 2%; margin-right: 2%; margin-bottom: 2%; margin-left: 4%;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Footer" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Footer.png?fileID=21300000&amp;guid=fdc17d7387e91624c89ee082b126750f&amp;type=3#Footer&quot;); height: auto; max-height: 11.5%; min-height: 11.5%;" />
