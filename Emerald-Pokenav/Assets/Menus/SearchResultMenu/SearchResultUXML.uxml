@@ -11,7 +11,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="PokemonStats" style="flex-grow: 1; width: 60%; max-width: 60%; min-width: 60px; margin-left: 0; margin-right: 1%;">
-                <ui:VisualElement name="Box" style="flex-grow: 2; background-image: url(&quot;project://database/Assets/Art/PokemonPartyTransparentBox.png?fileID=21300000&amp;guid=7857a745425393543b69b6e2cee7c09e&amp;type=3#PokemonPartyTransparentBox&quot;); flex-shrink: 1; margin-top: 1%; margin-right: 1%; margin-bottom: 1%; margin-left: 1%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; max-width: none; min-width: auto; flex-direction: column; width: auto;" />
+                <ui:VisualElement name="Box" style="flex-grow: 2; background-image: url(&quot;project://database/Assets/Art/PokemonPartyTransparentBox.png?fileID=21300000&amp;guid=7857a745425393543b69b6e2cee7c09e&amp;type=3#PokemonPartyTransparentBox&quot;); flex-shrink: 1; margin-top: 1%; margin-right: 1%; margin-bottom: 1%; margin-left: 1%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; max-width: none; min-width: auto; flex-direction: column; width: auto;">
+                    <ui:ListView name="SearchResultList" virtualization-method="DynamicHeight" selection-type="None" style="flex-grow: 1; margin-top: 50px; margin-bottom: 50px; margin-right: 50px; margin-left: 50px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Footer" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Footer.png?fileID=21300000&amp;guid=fdc17d7387e91624c89ee082b126750f&amp;type=3#Footer&quot;); height: auto; max-height: 11.5%; min-height: 11.5%;" />

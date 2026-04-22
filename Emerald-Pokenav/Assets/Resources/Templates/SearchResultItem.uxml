@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Menus/pokenav-stylesheet.uss?fileID=7433441132597879392&amp;guid=23b4a9aa1b545e94ca802a1e9914e75b&amp;type=3#pokenav-stylesheet" />
+    <ui:VisualElement name="SearchResultItem" class="unity-list-view__item" style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement name="ItemSelectedImage" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/SelectedArrow.png?fileID=21300000&amp;guid=f1d367bb455b72845bf22f4ad7f47095&amp;type=3#SelectedArrow&quot;); width: 5%; height: 60px; align-self: center;" />
+        <ui:Label tabindex="-1" text="Pokémon Name" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Name" style="flex-grow: 1; font-size: 50px; -unity-font-style: bold; color: rgb(70, 70, 70); -unity-text-align: middle-left; padding-left: 35px;" />
+        <ui:Label tabindex="-1" text="Lv 75" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Level" style="-unity-text-align: middle-right; flex-grow: 1; font-size: 50px; color: rgb(70, 70, 70); -unity-font-style: bold; padding-right: 52px;" />
+    </ui:VisualElement>
+</ui:UXML>

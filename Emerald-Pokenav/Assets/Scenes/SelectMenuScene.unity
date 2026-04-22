@@ -289,8 +289,20 @@ MonoBehaviour:
     sceneToLoad: PokemonPartyTestScene
     onClick:
       m_PersistentCalls:
-        m_Calls: []
-  - buttonText: Seach
+        m_Calls:
+        - m_Target: {fileID: 1477672420}
+          m_TargetAssemblyTypeName: SelectMenu, Assembly-CSharp
+          m_MethodName: SetPokemonPartyFromFile
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - buttonText: Search
     buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
     footerHoverText: Check all POKEMON in detail.
     sceneToLoad: SearchMenuScene

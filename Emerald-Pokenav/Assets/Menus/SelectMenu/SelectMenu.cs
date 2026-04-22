@@ -225,6 +225,9 @@ public class SelectMenu : MonoBehaviour
             buttonData.buttonColor
         );
 
+        // Ejecutamos el evento asociado
+        buttonData.onClick.Invoke();
+
         // Si el botón tiene una escena asignada, la cargamos.
         if (!string.IsNullOrEmpty(buttonData.sceneToLoad))
         {
@@ -232,8 +235,6 @@ public class SelectMenu : MonoBehaviour
             return;
         }
 
-        // Si no tiene escena, ejecutamos el evento normal.
-        buttonData.onClick.Invoke();
     }
 
 
@@ -273,6 +274,12 @@ public class SelectMenu : MonoBehaviour
         // Cuando el ratón sale del botón,
         // restauramos el texto por defecto del footer.
         footerLabel.text = defaultBottomText;
+    }
+
+    // Lo usamos en el menu de condition cuando el usuario presiona el boton de Party Pokemon
+    public void SetPokemonPartyFromFile()
+    {
+        PokemonPartyMenu.SetPartyPokemonFromFile("partyPokemon.json");
     }
 }
 

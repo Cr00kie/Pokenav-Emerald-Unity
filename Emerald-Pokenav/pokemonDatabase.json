@@ -51,6 +51,58 @@
         "smart": 0.4,
         "cute": 0.8
       }
+    },
+    {
+      "key": "treecko1",
+      "name": "Treecko1",
+      "level": 34,
+      "imgFileName": "treecko",
+      "stats": {
+        "cool": 0.8,
+        "tough": 0.11,
+        "beauty": 0.1,
+        "smart": 0.4,
+        "cute": 0.8
+      }
+    },
+    {
+      "key": "treecko2",
+      "name": "Treecko2",
+      "level": 34,
+      "imgFileName": "treecko",
+      "stats": {
+        "cool": 0.8,
+        "tough": 0.11,
+        "beauty": 0.1,
+        "smart": 0.4,
+        "cute": 0.8
+      }
+    },
+    {
+      "key": "treecko3",
+      "name": "Treecko3",
+      "level": 34,
+      "imgFileName": "treecko",
+      "stats": {
+        "cool": 0.8,
+        "tough": 0.11,
+        "beauty": 0.1,
+        "smart": 0.4,
+        "cute": 0.8
+      }
+    },
+    {
+      "key": "treecko4",
+      "name": "Treecko4",
+      "level": 34,
+      "imgFileName": "treecko",
+      "stats": {
+        "cool": 0.8,
+        "tough": 0.11,
+        "beauty": 0.1,
+        "smart": 0.4,
+        "cute": 0.8
+      }
     }
   ]
 }

@@ -1,13 +1,11 @@
-using JetBrains.Annotations;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System.IO;
 
-public class PokemonParty : MonoBehaviour
+public class PokemonPartyMenu : MonoBehaviour
 {
     [SerializeField]
     string menuTitle;
@@ -16,17 +14,21 @@ public class PokemonParty : MonoBehaviour
     string menuSubtitle;
     [SerializeField]
     Color subtitleColor;
-
-    [SerializeField]
-    string[] pokemonDisplayedIDs;
-
+    [Serializable]
+    public class PokemonParty
+    {
+        public string[] ids;
+    }
+    private static PokemonParty pokemonParty = new PokemonParty();
 
     VisualElement root;
     VisualElement pokeballContainer;
+    
 
     private void OnEnable()
     {
-        populateDatabaseFromJSONFile("pokemonDatabase.json");
+        // Intentar pillar los datos del JSON si todavía no los han pillado
+        PokemonDatabase.populateDatabaseFromJSONFile("pokemonDatabase.json");
         
         UIDocument document = GetComponent<UIDocument>();
         root = document.rootVisualElement;
@@ -42,12 +44,12 @@ public class PokemonParty : MonoBehaviour
         pokeballContainer = root.Q<VisualElement>("PokemonSelector");
         VisualTreeAsset pokeballButton = Resources.Load<VisualTreeAsset>("Templates/Pokeball");
         // Add pokemon data
-        for (int i = 0; i < pokemonDisplayedIDs.Length; i++)
+        for (int i = 0; i < pokemonParty.ids.Length; i++)
         {
             VisualElement pokeball = pokeballButton.Instantiate();
 
             // Set pokeball user data to be pokemon id in database
-            pokeball.userData = pokemonDisplayedIDs[i];
+            pokeball.userData = pokemonParty.ids[i];
 
             // Subscribe to change menu data on click
             pokeball.RegisterCallback<ClickEvent>((ClickEvent e) => {
@@ -60,17 +62,33 @@ public class PokemonParty : MonoBehaviour
         }
 
         // Set menu data for first pokemon given
-        if(pokemonDisplayedIDs.Length > 0)
+        if(pokemonParty.ids.Length > 0)
         {
-            updateDataDisplayed(pokemonDisplayedIDs[0]);
+            updateDataDisplayed(pokemonParty.ids[0]);
         }
+
+        VisualElement exitButton = root.Q<VisualElement>("Exit");
+        exitButton.RegisterCallback<ClickEvent>((ClickEvent e) =>
+        {
+            SceneManager.LoadScene("SelectMenuScene");
+        });
+    }
+
+    public static void SetPartyPokemon(string[] party)
+    {
+        pokemonParty.ids = party;
+    }
+
+    public static void SetPartyPokemonFromFile(string file)
+    {
+        pokemonParty = JsonUtility.FromJson<PokemonParty>(File.ReadAllText(file));
     }
 
     void changeSelectedPokemon(string newPokemonID)
     {
         VisualElement[] pokeballs = pokeballContainer.Children().ToArray<VisualElement>();
         // Recorremos solo el numero de pokemons que se esten mostrando (el ultimo hijo de la lista es el boton de salir)
-        for(int i = 0; i < pokemonDisplayedIDs.Length; i++)
+        for(int i = 0; i < pokemonParty.ids.Length; i++)
         {
             if (pokeballs[i].userData as string == newPokemonID)
             {
@@ -91,78 +109,27 @@ public class PokemonParty : MonoBehaviour
         Label name = root.Q<Label>("PokemonName");
         Label level = root.Q<Label>("PokemonLevel");
 
-        name.text = pkmnDatabase[newPokemonID].name;
-        level.text = "Lv " + pkmnDatabase[newPokemonID].level;
+        name.text = PokemonDatabase.get(newPokemonID).name;
+        level.text = "Lv " + PokemonDatabase.get(newPokemonID).level;
 
         // Actualizamos la imagen del pokemon
         VisualElement image = root.Q<VisualElement>("PokemonImage");
-        Sprite sprite = Resources.Load<Sprite>("PokemonIMG/" + pkmnDatabase[newPokemonID].imgFileName);
+        Sprite sprite = Resources.Load<Sprite>("PokemonIMG/" + PokemonDatabase.get(newPokemonID).imgFileName);
         image.style.backgroundImage = new StyleBackground(sprite);
 
         // Actualizamos el radar chart con las nuevas stats
         RadarChart chart = root.Q<RadarChart>("RadarChart");
         chart.SetStats(
-            pkmnDatabase[newPokemonID].stats.cool,
-            pkmnDatabase[newPokemonID].stats.beauty,
-            pkmnDatabase[newPokemonID].stats.cute,
-            pkmnDatabase[newPokemonID].stats.smart,
-            pkmnDatabase[newPokemonID].stats.tough
+            PokemonDatabase.get(newPokemonID).stats.cool,
+            PokemonDatabase.get(newPokemonID).stats.beauty,
+            PokemonDatabase.get(newPokemonID).stats.cute,
+            PokemonDatabase.get(newPokemonID).stats.smart,
+            PokemonDatabase.get(newPokemonID).stats.tough
             );
 
         // Cambiamos el pokemon seleccionado visualmente
         changeSelectedPokemon(newPokemonID);
     }
-
-    void populateDatabaseFromJSONFile(string jsonFile)
-    {
-        pkmnDatabase = new Dictionary<string, Pokemon>();
-
-        PokemonList pokemons = JsonUtility.FromJson<PokemonList>(File.ReadAllText(jsonFile));
-        foreach (var pokemon in pokemons.pokemons)
-        {
-            pkmnDatabase.Add(pokemon.key, pokemon); // use key field
-        }
-    }
-
-    Dictionary<string, Pokemon> pkmnDatabase;
 }
 
-[Serializable] class PokemonList
-{
-    public List<Pokemon> pokemons;
-}
 
-[Serializable]
-public struct Pokemon
-{
-    public Pokemon(string key, string name, int level, string imgFileName, float cool, float tough, float beauty, float smart, float cute)
-    {
-        this.key = key;
-        this.name = name;
-        this.level = level;
-        this.imgFileName = imgFileName;
-        stats = new PokemonStats(cool, tough, beauty, smart, cute);
-    }
-    public string key;
-    public string name;
-    public int level;
-    public string imgFileName;
-    public PokemonStats stats;
-
-    [Serializable]
-    public struct PokemonStats{
-        public PokemonStats(float cool, float tough, float beauty, float smart, float cute)
-        {
-            this.cool = cool;
-            this.tough = tough;
-            this.beauty = beauty;
-            this.smart = smart;
-            this.cute = cute;
-        }
-        public float cool;
-        public float tough;
-        public float beauty;
-        public float smart;
-        public float cute;
-    };
-}
