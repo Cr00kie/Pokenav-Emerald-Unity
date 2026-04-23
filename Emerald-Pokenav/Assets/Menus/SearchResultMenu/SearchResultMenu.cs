@@ -79,8 +79,8 @@ public class SearchResultMenu : MonoBehaviour
         searchResultList.bindItem = (element, index) =>
         {
             Pokemon p = pokemons[index];
-            element.Q<Label>("Name").text = p.name;
-            element.Q<Label>("Level").text = "Lv " + p.level;
+            element.Q<Label>("Col1").text = p.name;
+            element.Q<Label>("Col2").text = "Lv " + p.level;
             element.Q<VisualElement>("ItemSelectedImage").style.visibility = Visibility.Hidden;
 
             element.RegisterCallback<MouseEnterEvent>(e =>

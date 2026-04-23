@@ -1,0 +1,34 @@
+{
+  "trainers": [
+    {
+      "key": "stone",
+      "name": "Mr.Stone",
+      "tag": "Devon Pres.",
+      "strategy": "Mr.Stone strategy when fighting",
+      "pokemon": "Mr.Stone kind of pokemon used",
+      "selfintro": "How Mr.Stone introduces himself",
+      "location": "Location 1",
+      "imgFileName": "mrstone"
+    },
+    {
+      "key": "birch",
+      "name": "Prof. Birch",
+      "tag": "Pkn Profesor",
+      "strategy": "Prof. Birch strategy when fighting",
+      "pokemon": "Prof. Birch kind of pokemon used",
+      "selfintro": "How Prof. Birch introduces himself",
+      "location": "Location 2",
+      "imgFileName": "birch"
+    },
+    {
+      "key": "may",
+      "name": "May",
+      "tag": "Rad neighbor",
+      "strategy": "I'm not so good at battles.",
+      "pokemon": "I'll use any Pokemon!",
+      "selfintro": "My Pokemon and I help my father in his research.",
+      "location": "Rustoboro City",
+      "imgFileName": "may"
+    }
+  ]
+}
