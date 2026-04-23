@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ public class SearchResultMenu : MonoBehaviour
     private VisualElement subtitleContainer;
     private Label subtitleLabel;
     private ListView searchResultList;
+    private Tween arrowTween;
+    private VisualElement selectedPokemonArrow = null;
 
     public static EPokemonStats statUsedToFilterSearch;
 
@@ -63,8 +66,20 @@ public class SearchResultMenu : MonoBehaviour
             return;
         }
 
+        DOVirtual.Float(0f, 10f, 0.5f, val =>
+        {
+            if(selectedPokemonArrow != null) selectedPokemonArrow.style.translate = new StyleTranslate(new Translate(val, 0f));
+        })
+        .SetEase(Ease.InOutCubic)
+        .SetLoops(-1, LoopType.Yoyo);
+
         ApplySubtitleData();
         AddElementsToListView();
+    }
+
+    private void OnDisable()
+    {
+        arrowTween?.Kill();
     }
 
     private void AddElementsToListView()
@@ -85,12 +100,15 @@ public class SearchResultMenu : MonoBehaviour
 
             element.RegisterCallback<MouseEnterEvent>(e =>
             {
-                element.Q<VisualElement>("ItemSelectedImage").style.visibility = Visibility.Visible;
+                VisualElement arrow = element.Q<VisualElement>("ItemSelectedImage");
+                arrow.style.visibility = Visibility.Visible;
+                selectedPokemonArrow = arrow;
             });
 
             element.RegisterCallback<MouseLeaveEvent>(e =>
             {
                 element.Q<VisualElement>("ItemSelectedImage").style.visibility = Visibility.Hidden;
+                selectedPokemonArrow = null;
             });
 
             element.RegisterCallback<ClickEvent>(e =>
@@ -99,6 +117,12 @@ public class SearchResultMenu : MonoBehaviour
                 // Cambiamos a la escena con los pokemon y estadísticas
                 SceneManager.LoadScene(0);
             });
+
+            element.style.translate = new StyleTranslate(new Translate(1000f, 0f)); 
+            DOVirtual.Float(1000f, 0f, 0.5f, val =>
+            {
+                element.style.translate = new StyleTranslate(new Translate(val, 0f));
+            }).SetDelay(index*0.05f);
         };
     }
 

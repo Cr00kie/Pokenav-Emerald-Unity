@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System.IO;
+using DG.Tweening;
 
 public class PokemonPartyMenu : MonoBehaviour
 {
@@ -54,11 +55,17 @@ public class PokemonPartyMenu : MonoBehaviour
             // Subscribe to change menu data on click
             pokeball.RegisterCallback<ClickEvent>((ClickEvent e) => {
                 string pkmnID = (e.target as VisualElement).parent.userData as string;
-                if(pkmnID != null) updateDataDisplayed(pkmnID);
-                });
+                if (pkmnID != null) updateDataDisplayed(pkmnID);
+            });
 
             // Add pokeball button to container
             pokeballContainer.Insert(i, pokeball);
+
+            pokeball.style.translate = new StyleTranslate(new Translate(500f, 0f));
+            DOVirtual.Float(500f, 0f, 0.5f, val =>
+            {
+                pokeball.style.translate = new StyleTranslate(new Translate(val, 0f));
+            }).SetDelay(i*0.1f);
         }
 
         // Set menu data for first pokemon given
@@ -116,6 +123,10 @@ public class PokemonPartyMenu : MonoBehaviour
         VisualElement image = root.Q<VisualElement>("PokemonImage");
         Sprite sprite = Resources.Load<Sprite>("PokemonIMG/" + PokemonDatabase.get(newPokemonID).imgFileName);
         image.style.backgroundImage = new StyleBackground(sprite);
+        DOVirtual.Float(-300, 0f, 0.8f, val =>
+        {
+            image.style.translate = new StyleTranslate(new Translate(val, 0f));
+        }).SetEase(Ease.OutCubic);
 
         // Actualizamos el radar chart con las nuevas stats
         RadarChart chart = root.Q<RadarChart>("RadarChart");
@@ -129,6 +140,11 @@ public class PokemonPartyMenu : MonoBehaviour
 
         // Cambiamos el pokemon seleccionado visualmente
         changeSelectedPokemon(newPokemonID);
+    }
+
+    private void OnDisable()
+    {
+       
     }
 }
 

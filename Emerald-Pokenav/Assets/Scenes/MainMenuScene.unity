@@ -304,13 +304,6 @@ MonoBehaviour:
     onClick:
       m_PersistentCalls:
         m_Calls: []
-  - buttonText: Ribbons
-    buttonColor: {r: 0.7137255, g: 0.35686275, b: 0.85490197, a: 1}
-    footerHoverText: Check obteined RIBBONS.
-    sceneToLoad: 
-    onClick:
-      m_PersistentCalls:
-        m_Calls: []
   - buttonText: Switch off
     buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
     footerHoverText: Put away the POKENAV.

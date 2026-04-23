@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class SelectMenu : MonoBehaviour
 {
@@ -193,6 +194,10 @@ public class SelectMenu : MonoBehaviour
 
             // Añadimos el botón instanciado al contenedor
             buttonsContainer.Add(buttonInstance);
+
+            buttonInstance.style.translate = new StyleTranslate(new Translate(1000f, 0f));
+            DOVirtual.Float(1000f, 0f, 0.2f, val => buttonInstance.style.translate = new StyleTranslate(new Translate(val, 0f)))
+                .SetDelay(0.1f*i);
         }
 
         //  Refrescamos callbacks para hover
