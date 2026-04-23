@@ -284,42 +284,48 @@ MonoBehaviour:
   buttonTemplate: {fileID: 9197481963319205126, guid: 865c479d49f5d284faefec8b59dcd6eb, type: 3}
   buttons:
   - buttonText: Cool
-    buttonColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
+    nextSceneSubtitleColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 91df0f93caf3c61438308baaaa58a195, type: 3}
     footerHoverText: Find cool POKEMON.
     sceneToLoad: SearchResultMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Beauty
-    buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
+    nextSceneSubtitleColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 2d39d6a821db4cf44a139a3684908efc, type: 3}
     footerHoverText: Find beauty POKEMON.
     sceneToLoad: SearchResultMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Cute
-    buttonColor: {r: 0.7137255, g: 0.35686275, b: 0.85490197, a: 1}
+    nextSceneSubtitleColor: {r: 0.7137255, g: 0.35686275, b: 0.85490197, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: d0d33370c653add41b535912346ce2db, type: 3}
     footerHoverText: Find cute POKEMON.
     sceneToLoad: SearchResultMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Smart
-    buttonColor: {r: 0.48235294, g: 0.7411765, b: 0.3647059, a: 1}
+    nextSceneSubtitleColor: {r: 0.48235294, g: 0.7411765, b: 0.3647059, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 4a14da08a50c9194882624bad9ad3300, type: 3}
     footerHoverText: Find smart POKEMON.
     sceneToLoad: SearchResultMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Tough
-    buttonColor: {r: 1, g: 0.6745098, b: 0.3254902, a: 1}
+    nextSceneSubtitleColor: {r: 1, g: 0.654902, b: 0.015686275, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 4be7a3f1cd7c15c4f8caece1ed2739d1, type: 3}
     footerHoverText: Find tough POKEMON.
     sceneToLoad: SearchResultMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Cancel
-    buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
+    nextSceneSubtitleColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 6d19e9228305e5842afe9a8f6c9c9023, type: 3}
     footerHoverText: Return to the CONDITION menu.
     sceneToLoad: SelectMenuScene
     onClick:

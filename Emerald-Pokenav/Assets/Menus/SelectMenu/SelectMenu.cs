@@ -185,7 +185,12 @@ public class SelectMenu : MonoBehaviour
             buttonLabel.text = buttonData.buttonText;
 
             // Aplicamos el color
-            buttonRoot.style.unityBackgroundImageTintColor = new StyleColor(buttonData.buttonColor);
+            if (buttonData.buttonBackgroundImage != null)
+            {
+                buttonRoot.style.backgroundImage = new StyleBackground(buttonData.buttonBackgroundImage);
+            }
+
+            buttonRoot.style.unityBackgroundImageTintColor = new StyleColor(Color.white);
 
             // Registramos el click
             buttonRoot.RegisterCallback<ClickEvent>(OnMenuButtonClicked);
@@ -227,7 +232,7 @@ public class SelectMenu : MonoBehaviour
         // Cuando se hace click en el botón, guardamos su texto y color en MenuNavigationData
         MenuNavigationData.SetSubtitleData(
             buttonData.buttonText,
-            buttonData.buttonColor
+            buttonData.nextSceneSubtitleColor
         );
 
         // Ejecutamos el evento asociado
@@ -293,7 +298,10 @@ public class MenuButtonData
 {
     [Header("Visual")]
     public string buttonText = "New Button";
-    public Color buttonColor = Color.white;
+    public Color nextSceneSubtitleColor = Color.white;
+    
+    // Imagen de fondo del botón en este menú
+    public Sprite buttonBackgroundImage;
 
     [Header("Footer")]
     [TextArea(2, 4)]

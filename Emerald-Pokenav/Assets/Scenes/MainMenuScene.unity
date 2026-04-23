@@ -284,28 +284,32 @@ MonoBehaviour:
   buttonTemplate: {fileID: 9197481963319205126, guid: 865c479d49f5d284faefec8b59dcd6eb, type: 3}
   buttons:
   - buttonText: Hoenn Map
-    buttonColor: {r: 0.90943396, g: 0.5405126, b: 0.5405126, a: 1}
+    nextSceneSubtitleColor: {r: 0.48235294, g: 0.7411765, b: 0.3647059, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 4a14da08a50c9194882624bad9ad3300, type: 3}
     footerHoverText: Check the map oh the HOENN region.
     sceneToLoad: 
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Condition
-    buttonColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
+    nextSceneSubtitleColor: {r: 0.40392157, g: 0.3882353, b: 0.8862745, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 2d39d6a821db4cf44a139a3684908efc, type: 3}
     footerHoverText: Check POKEMON in detail.
     sceneToLoad: SelectMenuScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Match Call
-    buttonColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
+    nextSceneSubtitleColor: {r: 0.9411765, g: 0.3254902, b: 0.3254902, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 91df0f93caf3c61438308baaaa58a195, type: 3}
     footerHoverText: Call a registered TRAINER.
     sceneToLoad: MatchCallScene
     onClick:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Switch off
-    buttonColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
+    nextSceneSubtitleColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 6d19e9228305e5842afe9a8f6c9c9023, type: 3}
     footerHoverText: Put away the POKENAV.
     sceneToLoad: 
     onClick:
