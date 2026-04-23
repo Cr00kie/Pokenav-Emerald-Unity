@@ -312,8 +312,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - buttonText: Cancel
-    nextSceneSubtitleColor: {r: 1, g: 1, b: 1, a: 1}
-    buttonBackgroundImage: {fileID: 0}
+    nextSceneSubtitleColor: {r: 0.70980394, g: 0.6784314, b: 0.48235294, a: 1}
+    buttonBackgroundImage: {fileID: 21300000, guid: 6d19e9228305e5842afe9a8f6c9c9023, type: 3}
     footerHoverText: Return to the POKENAV menu.
     sceneToLoad: MainMenuScene
     onClick:
