@@ -1,10 +1,5 @@
 using DG.Tweening;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -17,8 +12,10 @@ public class MatchCallMenu : MonoBehaviour
     private VisualElement trainerDetails;
     private VisualElement trainerImage;
     private VisualElement matchCallData;
+    private VisualElement returnButton;
 
     // Trainer details elements
+    bool isDetailsShown = false;
     private Label trainerName;
     private Label trainerTag;
     private Label trainerStrategy;
@@ -53,6 +50,24 @@ public class MatchCallMenu : MonoBehaviour
         // Buscamos la lista donde pondremos el resultado de la búsqueda
         searchResultList = root.Q<ListView>("SearchResultList");
 
+        // Buscamos el boton para salir
+        returnButton = root.Q<VisualElement>("ReturnButton");
+        returnButton.RegisterCallback<ClickEvent>(ev =>
+        {
+            // Hide details if shown
+            if (isDetailsShown)
+            {
+                showTrainerDetails(false);
+            }
+            // Else return to main menu
+            else
+            {
+                SceneManager.LoadScene("MainMenuScene");
+            }
+        });
+
+        // Fetch details visual elements
+        isDetailsShown = false;
         trainerDetails = root.Q<VisualElement>("TrainerDetails");
         trainerImage = root.Q<VisualElement>("TrainerImage");
         matchCallData = root.Q<VisualElement>("MatchCallData");
@@ -95,6 +110,7 @@ public class MatchCallMenu : MonoBehaviour
         matchCallData.style.display = showDetails ? DisplayStyle.None : DisplayStyle.Flex;
         trainerDetails.style.display = showDetails ? DisplayStyle.Flex : DisplayStyle.None;
         trainerImage.style.display = showDetails ? DisplayStyle.Flex : DisplayStyle.None;
+        isDetailsShown = showDetails;
     }
 
     private void AddElementsToListView()

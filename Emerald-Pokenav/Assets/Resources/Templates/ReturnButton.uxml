@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="ReturnButton" class="return-button">
+        <ui:Label tabindex="-1" text="Return" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ReturnText" style="font-size: 45px; -unity-font-style: bold; color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: upper-center;" />
+    </ui:VisualElement>
+</ui:UXML>
