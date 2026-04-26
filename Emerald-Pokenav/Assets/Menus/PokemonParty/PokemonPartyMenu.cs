@@ -24,6 +24,7 @@ public class PokemonPartyMenu : MonoBehaviour
 
     VisualElement root;
     VisualElement pokeballContainer;
+    VisualElement smallStar;
     
 
     private void OnEnable()
@@ -41,6 +42,10 @@ public class PokemonPartyMenu : MonoBehaviour
         subtitle.text = menuSubtitle;
         VisualElement subtitleContainer = root.Q<VisualElement>("Subtitle");
         subtitleContainer.style.unityBackgroundImageTintColor = subtitleColor;
+
+        // Small Star animating in loop
+        smallStar = root.Q<VisualElement>("SmallStar");
+        
 
         pokeballContainer = root.Q<VisualElement>("PokemonSelector");
         VisualTreeAsset pokeballButton = Resources.Load<VisualTreeAsset>("Templates/Pokeball");
@@ -123,20 +128,33 @@ public class PokemonPartyMenu : MonoBehaviour
         VisualElement image = root.Q<VisualElement>("PokemonImage");
         Sprite sprite = Resources.Load<Sprite>("PokemonIMG/" + PokemonDatabase.get(newPokemonID).imgFileName);
         image.style.backgroundImage = new StyleBackground(sprite);
-        DOVirtual.Float(-300, 0f, 0.8f, val =>
+        DOVirtual.Float(-300f, 0f, 0.8f, val =>
         {
             image.style.translate = new StyleTranslate(new Translate(val, 0f));
         }).SetEase(Ease.OutCubic);
 
         // Actualizamos el radar chart con las nuevas stats
         RadarChart chart = root.Q<RadarChart>("RadarChart");
-        chart.SetStats(
-            PokemonDatabase.get(newPokemonID).stats.cool,
-            PokemonDatabase.get(newPokemonID).stats.beauty,
-            PokemonDatabase.get(newPokemonID).stats.cute,
-            PokemonDatabase.get(newPokemonID).stats.smart,
-            PokemonDatabase.get(newPokemonID).stats.tough
-            );
+
+        // Set new stats with a nice tween
+        Pokemon pokemon = PokemonDatabase.get(newPokemonID);
+        float[] prevStats = chart.GetStats();
+        DOVirtual.Float(0f, 1f, 0.5f, dt =>
+        {
+            chart.SetStats(
+                prevStats[0] + (pokemon.stats.cool - prevStats[0]) * dt,
+                prevStats[1] + (pokemon.stats.beauty - prevStats[1]) * dt,
+                prevStats[2] + (pokemon.stats.cute - prevStats[2]) * dt,
+                prevStats[3] + (pokemon.stats.smart - prevStats[3]) * dt,
+                prevStats[4] + (pokemon.stats.tough - prevStats[4]) * dt
+                );
+        });
+        DOVirtual.Float(1f, 0f, 0.5f, val =>
+        {
+            smallStar.style.scale = new StyleScale(new Vector2(1f - val, 1f - val));
+            smallStar.style.rotate = new StyleRotate(new Rotate(new Angle(val * 360f)));
+            smallStar.style.unityBackgroundImageTintColor = new StyleColor(new Color(val+0.5f, 1f, 0f));
+        }).SetLoops(2);
 
         // Cambiamos el pokemon seleccionado visualmente
         changeSelectedPokemon(newPokemonID);

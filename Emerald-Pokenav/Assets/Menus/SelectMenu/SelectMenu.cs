@@ -131,6 +131,7 @@ public class SelectMenu : MonoBehaviour
             titleLabel.text = menuTitle;
             titleLabel.style.color = new StyleColor(titleTextColor);
         }
+        DOVirtual.Float(-500f, 0f, 0.3f, v => titleContainer.style.translate = new StyleTranslate(new Translate(v, 0f)));
 
         // Aplicamos el texto de la caja inferior
         if (footerLabel != null)
@@ -241,7 +242,17 @@ public class SelectMenu : MonoBehaviour
         // Si el botón tiene una escena asignada, la cargamos.
         if (!string.IsNullOrEmpty(buttonData.sceneToLoad))
         {
-            SceneManager.LoadScene(buttonData.sceneToLoad);
+            
+
+            DOVirtual.Float(1f, 0f, 0.3f, dt => {
+                titleContainer.style.opacity = dt;
+                buttonsContainer.style.opacity = dt;
+
+                titleContainer.style.translate = new StyleTranslate(new Translate(-(1-dt) * 500f, 0f));
+                buttonRoot.style.scale = new StyleScale(new Vector2((1 + 0.5f*(1-dt)), (1 + 0.5f * (1 - dt))));
+            })
+              .OnComplete(()=>SceneManager.LoadScene(buttonData.sceneToLoad));
+            
             return;
         }
 

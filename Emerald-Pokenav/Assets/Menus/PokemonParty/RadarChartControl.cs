@@ -46,6 +46,8 @@ public class RadarChart : VisualElement
         MarkDirtyRepaint();
     }
 
+    public float[] GetStats() { return stats; }
+
     private void OnGenerateVisualContent(MeshGenerationContext ctx)
     {
         float cx = contentRect.width / 2f;
