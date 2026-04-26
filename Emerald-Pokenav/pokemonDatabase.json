@@ -51,6 +51,526 @@
         "smart": 0.4,
         "cute": 0.8
       }
+    },
+    {
+      "key": "mewtwo",
+      "name": "Mewtwo",
+      "level": 90,
+      "imgFileName": "mewtwo",
+      "stats": {
+        "cool": 0.9,
+        "tough": 0.7,
+        "beauty": 0.3,
+        "smart": 1.0,
+        "cute": 0.1
+      }
+    },
+    {
+      "key": "charizard",
+      "name": "Charizard",
+      "level": 65,
+      "imgFileName": "charizard",
+      "stats": {
+        "cool": 0.95,
+        "tough": 0.8,
+        "beauty": 0.5,
+        "smart": 0.5,
+        "cute": 0.2
+      }
+    },
+    {
+      "key": "pikachu",
+      "name": "Pikachu",
+      "level": 20,
+      "imgFileName": "pikachu",
+      "stats": {
+        "cool": 0.6,
+        "tough": 0.3,
+        "beauty": 0.4,
+        "smart": 0.5,
+        "cute": 0.95
+      }
+    },
+    {
+      "key": "gengar",
+      "name": "Gengar",
+      "level": 45,
+      "imgFileName": "gengar",
+      "stats": {
+        "cool": 0.85,
+        "tough": 0.4,
+        "beauty": 0.2,
+        "smart": 0.75,
+        "cute": 0.3
+      }
+    },
+    {
+      "key": "eevee",
+      "name": "Eevee",
+      "level": 15,
+      "imgFileName": "eevee",
+      "stats": {
+        "cool": 0.5,
+        "tough": 0.2,
+        "beauty": 0.6,
+        "smart": 0.4,
+        "cute": 0.9
+      }
+    },
+    {
+      "key": "snorlax",
+      "name": "Snorlax",
+      "level": 40,
+      "imgFileName": "snorlax",
+      "stats": {
+        "cool": 0.2,
+        "tough": 0.95,
+        "beauty": 0.1,
+        "smart": 0.2,
+        "cute": 0.55
+      }
+    },
+    {
+      "key": "lucario",
+      "name": "Lucario",
+      "level": 55,
+      "imgFileName": "lucario",
+      "stats": {
+        "cool": 0.9,
+        "tough": 0.7,
+        "beauty": 0.5,
+        "smart": 0.8,
+        "cute": 0.3
+      }
+    },
+    {
+      "key": "milotic",
+      "name": "Milotic",
+      "level": 50,
+      "imgFileName": "milotic",
+      "stats": {
+        "cool": 0.4,
+        "tough": 0.3,
+        "beauty": 0.98,
+        "smart": 0.6,
+        "cute": 0.7
+      }
+    },
+    {
+      "key": "garchomp",
+      "name": "Garchomp",
+      "level": 70,
+      "imgFileName": "garchomp",
+      "stats": {
+        "cool": 0.88,
+        "tough": 0.9,
+        "beauty": 0.2,
+        "smart": 0.45,
+        "cute": 0.1
+      }
+    },
+    {
+      "key": "clefairy",
+      "name": "Clefairy",
+      "level": 12,
+      "imgFileName": "clefairy",
+      "stats": {
+        "cool": 0.2,
+        "tough": 0.15,
+        "beauty": 0.5,
+        "smart": 0.35,
+        "cute": 0.92
+      }
+    },
+    {
+      "key": "machamp",
+      "name": "Machamp",
+      "level": 48,
+      "imgFileName": "machamp",
+      "stats": {
+        "cool": 0.5,
+        "tough": 0.97,
+        "beauty": 0.1,
+        "smart": 0.25,
+        "cute": 0.1
+      }
+    },
+    {
+      "key": "umbreon",
+      "name": "Umbreon",
+      "level": 35,
+      "imgFileName": "umbreon",
+      "stats": {
+        "cool": 0.8,
+        "tough": 0.5,
+        "beauty": 0.6,
+        "smart": 0.6,
+        "cute": 0.55
+      }
+    },
+    {
+      "key": "togekiss",
+      "name": "Togekiss",
+      "level": 42,
+      "imgFileName": "togekiss",
+      "stats": {
+        "cool": 0.35,
+        "tough": 0.3,
+        "beauty": 0.7,
+        "smart": 0.65,
+        "cute": 0.88
+      }
+    },
+    {
+      "key": "absol",
+      "name": "Absol",
+      "level": 38,
+      "imgFileName": "absol",
+      "stats": {
+        "cool": 0.82,
+        "tough": 0.6,
+        "beauty": 0.55,
+        "smart": 0.5,
+        "cute": 0.25
+      }
+    },
+    {
+      "key": "alakazam",
+      "name": "Alakazam",
+      "level": 52,
+      "imgFileName": "alakazam",
+      "stats": {
+        "cool": 0.55,
+        "tough": 0.15,
+        "beauty": 0.3,
+        "smart": 0.97,
+        "cute": 0.2
+      }
+    },
+    {
+      "key": "dragonite",
+      "name": "Dragonite",
+      "level": 68,
+      "imgFileName": "dragonite",
+      "stats": {
+        "cool": 0.75,
+        "tough": 0.85,
+        "beauty": 0.5,
+        "smart": 0.6,
+        "cute": 0.45
+      }
+    },
+    {
+      "key": "sylveon",
+      "name": "Sylveon",
+      "level": 30,
+      "imgFileName": "sylveon",
+      "stats": {
+        "cool": 0.3,
+        "tough": 0.2,
+        "beauty": 0.88,
+        "smart": 0.45,
+        "cute": 0.97
+      }
+    },
+    {
+      "key": "tyranitar",
+      "name": "Tyranitar",
+      "level": 72,
+      "imgFileName": "tyranitar",
+      "stats": {
+        "cool": 0.7,
+        "tough": 0.97,
+        "beauty": 0.15,
+        "smart": 0.3,
+        "cute": 0.05
+      }
+    },
+    {
+      "key": "espeon",
+      "name": "Espeon",
+      "level": 32,
+      "imgFileName": "espeon",
+      "stats": {
+        "cool": 0.65,
+        "tough": 0.2,
+        "beauty": 0.75,
+        "smart": 0.9,
+        "cute": 0.7
+      }
+    },
+    {
+      "key": "bulbasaur",
+      "name": "Bulbasaur",
+      "level": 10,
+      "imgFileName": "bulbasaur",
+      "stats": {
+        "cool": 0.3,
+        "tough": 0.35,
+        "beauty": 0.4,
+        "smart": 0.5,
+        "cute": 0.65
+      }
+    },
+    {
+      "key": "squirtle",
+      "name": "Squirtle",
+      "level": 10,
+      "imgFileName": "squirtle",
+      "stats": {
+        "cool": 0.45,
+        "tough": 0.4,
+        "beauty": 0.35,
+        "smart": 0.45,
+        "cute": 0.75
+      }
+    },
+    {
+      "key": "arcanine",
+      "name": "Arcanine",
+      "level": 45,
+      "imgFileName": "arcanine",
+      "stats": {
+        "cool": 0.88,
+        "tough": 0.75,
+        "beauty": 0.65,
+        "smart": 0.5,
+        "cute": 0.5
+      }
+    },
+    {
+      "key": "ninetales",
+      "name": "Ninetales",
+      "level": 38,
+      "imgFileName": "ninetales",
+      "stats": {
+        "cool": 0.75,
+        "tough": 0.35,
+        "beauty": 0.85,
+        "smart": 0.72,
+        "cute": 0.6
+      }
+    },
+    {
+      "key": "wobbuffet",
+      "name": "Wobbuffet",
+      "level": 22,
+      "imgFileName": "wobbuffet",
+      "stats": {
+        "cool": 0.1,
+        "tough": 0.6,
+        "beauty": 0.1,
+        "smart": 0.15,
+        "cute": 0.7
+      }
+    },
+    {
+      "key": "flygon",
+      "name": "Flygon",
+      "level": 55,
+      "imgFileName": "flygon",
+      "stats": {
+        "cool": 0.78,
+        "tough": 0.65,
+        "beauty": 0.5,
+        "smart": 0.4,
+        "cute": 0.35
+      }
+    },
+    {
+      "key": "mimikyu",
+      "name": "Mimikyu",
+      "level": 28,
+      "imgFileName": "mimikyu",
+      "stats": {
+        "cool": 0.4,
+        "tough": 0.35,
+        "beauty": 0.2,
+        "smart": 0.5,
+        "cute": 0.82
+      }
+    },
+    {
+      "key": "steelix",
+      "name": "Steelix",
+      "level": 44,
+      "imgFileName": "steelix",
+      "stats": {
+        "cool": 0.45,
+        "tough": 0.92,
+        "beauty": 0.15,
+        "smart": 0.2,
+        "cute": 0.05
+      }
+    },
+    {
+      "key": "jigglypuff",
+      "name": "Jigglypuff",
+      "level": 11,
+      "imgFileName": "jigglypuff",
+      "stats": {
+        "cool": 0.2,
+        "tough": 0.1,
+        "beauty": 0.45,
+        "smart": 0.15,
+        "cute": 0.95
+      }
+    },
+    {
+      "key": "scizor",
+      "name": "Scizor",
+      "level": 50,
+      "imgFileName": "scizor",
+      "stats": {
+        "cool": 0.85,
+        "tough": 0.8,
+        "beauty": 0.4,
+        "smart": 0.4,
+        "cute": 0.15
+      }
+    },
+    {
+      "key": "lapras",
+      "name": "Lapras",
+      "level": 35,
+      "imgFileName": "lapras",
+      "stats": {
+        "cool": 0.4,
+        "tough": 0.55,
+        "beauty": 0.72,
+        "smart": 0.65,
+        "cute": 0.68
+      }
+    },
+    {
+      "key": "luxray",
+      "name": "Luxray",
+      "level": 40,
+      "imgFileName": "luxray",
+      "stats": {
+        "cool": 0.88,
+        "tough": 0.65,
+        "beauty": 0.4,
+        "smart": 0.5,
+        "cute": 0.3
+      }
+    },
+    {
+      "key": "gardevoir",
+      "name": "Gardevoir",
+      "level": 50,
+      "imgFileName": "gardevoir",
+      "stats": {
+        "cool": 0.55,
+        "tough": 0.3,
+        "beauty": 0.88,
+        "smart": 0.85,
+        "cute": 0.72
+      }
+    },
+    {
+      "key": "haunter",
+      "name": "Haunter",
+      "level": 28,
+      "imgFileName": "haunter",
+      "stats": {
+        "cool": 0.7,
+        "tough": 0.3,
+        "beauty": 0.15,
+        "smart": 0.6,
+        "cute": 0.35
+      }
+    },
+    {
+      "key": "totodile",
+      "name": "Totodile",
+      "level": 8,
+      "imgFileName": "totodile",
+      "stats": {
+        "cool": 0.55,
+        "tough": 0.5,
+        "beauty": 0.2,
+        "smart": 0.3,
+        "cute": 0.78
+      }
+    },
+    {
+      "key": "cyndaquil",
+      "name": "Cyndaquil",
+      "level": 8,
+      "imgFileName": "cyndaquil",
+      "stats": {
+        "cool": 0.5,
+        "tough": 0.3,
+        "beauty": 0.25,
+        "smart": 0.4,
+        "cute": 0.82
+      }
+    },
+    {
+      "key": "heracross",
+      "name": "Heracross",
+      "level": 36,
+      "imgFileName": "heracross",
+      "stats": {
+        "cool": 0.6,
+        "tough": 0.88,
+        "beauty": 0.15,
+        "smart": 0.3,
+        "cute": 0.25
+      }
+    },
+    {
+      "key": "blaziken",
+      "name": "Blaziken",
+      "level": 60,
+      "imgFileName": "blaziken",
+      "stats": {
+        "cool": 0.92,
+        "tough": 0.85,
+        "beauty": 0.3,
+        "smart": 0.45,
+        "cute": 0.2
+      }
+    },
+    {
+      "key": "swampert",
+      "name": "Swampert",
+      "level": 58,
+      "imgFileName": "swampert",
+      "stats": {
+        "cool": 0.5,
+        "tough": 0.88,
+        "beauty": 0.25,
+        "smart": 0.4,
+        "cute": 0.3
+      }
+    },
+    {
+      "key": "roserade",
+      "name": "Roserade",
+      "level": 35,
+      "imgFileName": "roserade",
+      "stats": {
+        "cool": 0.6,
+        "tough": 0.25,
+        "beauty": 0.9,
+        "smart": 0.55,
+        "cute": 0.65
+      }
+    },
+    {
+      "key": "aggron",
+      "name": "Aggron",
+      "level": 62,
+      "imgFileName": "aggron",
+      "stats": {
+        "cool": 0.55,
+        "tough": 0.95,
+        "beauty": 0.1,
+        "smart": 0.2,
+        "cute": 0.05
+      }
     }
   ]
 }

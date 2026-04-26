@@ -1,34 +1,204 @@
 {
   "trainers": [
     {
-      "key": "stone",
-      "name": "Mr.Stone",
-      "tag": "Devon Pres.",
-      "strategy": "Mr.Stone strategy when fighting",
-      "pokemon": "Mr.Stone kind of pokemon used",
-      "selfintro": "How Mr.Stone introduces himself",
-      "location": "Location 1",
-      "imgFileName": "mrstone"
+      "key": "brock",
+      "name": "Brock",
+      "tag": "Pewter Gym Ldr",
+      "strategy": "I use the hard-as-rock defense of my Rock-types to outlast any opponent.",
+      "pokemon": "I train Rock and Ground-type Pokémon forged by the earth itself.",
+      "selfintro": "I'm Brock, the Pewter City Gym Leader. I'm serious about raising Pokémon!",
+      "location": "Pewter City",
+      "imgFileName": "brock"
     },
     {
-      "key": "birch",
-      "name": "Prof. Birch",
-      "tag": "Pkn Profesor",
-      "strategy": "Prof. Birch strategy when fighting",
-      "pokemon": "Prof. Birch kind of pokemon used",
-      "selfintro": "How Prof. Birch introduces himself",
-      "location": "Location 2",
-      "imgFileName": "birch"
+      "key": "misty",
+      "name": "Misty",
+      "tag": "Cerulean Gym Ldr",
+      "strategy": "My Water-types will wash away your team before you even see it coming.",
+      "pokemon": "I use Water-type Pokémon — beautiful and absolutely deadly.",
+      "selfintro": "I'm Misty, the tomboyish mermaid and Cerulean City's Gym Leader!",
+      "location": "Cerulean City",
+      "imgFileName": "misty"
     },
     {
-      "key": "may",
-      "name": "May",
-      "tag": "Rad neighbor",
-      "strategy": "I'm not so good at battles.",
-      "pokemon": "I'll use any Pokemon!",
-      "selfintro": "My Pokemon and I help my father in his research.",
-      "location": "Rustoboro City",
-      "imgFileName": "may"
+      "key": "giovanni",
+      "name": "Giovanni",
+      "tag": "Gym Ldr / Boss",
+      "strategy": "I crush opponents beneath the weight of my Ground-types. There is no escape.",
+      "pokemon": "I command Ground-type Pokémon — and the most powerful ones at that.",
+      "selfintro": "I am Giovanni. I will show you what it means to face true power.",
+      "location": "Viridian City",
+      "imgFileName": "giovanni"
+    },
+    {
+      "key": "lance",
+      "name": "Lance",
+      "tag": "Elite Four",
+      "strategy": "My Dragons strike before the opponent can even formulate a plan.",
+      "pokemon": "I use Dragon-type Pokémon — the mightiest of all.",
+      "selfintro": "I'm Lance the Dragon Trainer. Do you still want to take me on?",
+      "location": "Victory Road",
+      "imgFileName": "lance"
+    },
+    {
+      "key": "oak",
+      "name": "Prof. Oak",
+      "tag": "Pkn Professor",
+      "strategy": "Knowledge is my greatest weapon. I use well-rounded Pokémon to cover every angle.",
+      "pokemon": "I use a balanced team of fully evolved Pokémon from all three Kanto starters.",
+      "selfintro": "I'm Oak — a Pokémon researcher. There's still much we don't know about Pokémon!",
+      "location": "Pallet Town",
+      "imgFileName": "oak"
+    },
+    {
+      "key": "whitney",
+      "name": "Whitney",
+      "tag": "Goldenrod Gym Ldr",
+      "strategy": "Don't underestimate me! My Miltank will roll right over your whole team.",
+      "pokemon": "I use Normal-type Pokémon. Cute but incredibly powerful!",
+      "selfintro": "I'm Whitney! Everyone was impressed by my skill and said I should be a Gym Leader!",
+      "location": "Goldenrod City",
+      "imgFileName": "whitney"
+    },
+    {
+      "key": "morty",
+      "name": "Morty",
+      "tag": "Ecruteak Gym Ldr",
+      "strategy": "My Ghost-types phase in and out of reality — you can't hit what you can't see.",
+      "pokemon": "I use Ghost-type Pokémon that drift between the world of the living and the dead.",
+      "selfintro": "I'm Morty. With my honed skills, I can see what others cannot.",
+      "location": "Ecruteak City",
+      "imgFileName": "morty"
+    },
+    {
+      "key": "clair",
+      "name": "Clair",
+      "tag": "Blackthorn Gym Ldr",
+      "strategy": "My Dragon-types will obliterate you with sheer force. Resistance is pointless.",
+      "pokemon": "I train Dragon-type Pokémon, the most noble and powerful of all.",
+      "selfintro": "I'm Clair, the world's best Dragon-type Trainer. That's no brag — just fact.",
+      "location": "Blackthorn City",
+      "imgFileName": "clair"
+    },
+    {
+      "key": "norman",
+      "name": "Norman",
+      "tag": "Petalburg Gym Ldr",
+      "strategy": "I build my battles around stamina and balance — Normal-types can outlast anyone.",
+      "pokemon": "I use Normal-type Pokémon raised with discipline and heart.",
+      "selfintro": "I'm Norman — Petalburg's Gym Leader. And also someone's father, I'm told.",
+      "location": "Petalburg City",
+      "imgFileName": "norman"
+    },
+    {
+      "key": "wally",
+      "name": "Wally",
+      "tag": "Rival",
+      "strategy": "I've grown a lot since we first met. My Pokémon and I won't hold back!",
+      "pokemon": "I use Pokémon that grew alongside me — especially my beloved Gallade.",
+      "selfintro": "I'm Wally. I used to be frail, but my Pokémon gave me strength to keep going.",
+      "location": "Victory Road",
+      "imgFileName": "wally"
+    },
+    {
+      "key": "steven",
+      "name": "Steven Stone",
+      "tag": "Champion",
+      "strategy": "I fortify my field with Steel-types, then strike with the power of Rock and Ground.",
+      "pokemon": "I use Steel and Rock-type Pokémon — as rare and enduring as the stones I collect.",
+      "selfintro": "I'm Steven. I travel the world searching for rare stones... and worthy challengers.",
+      "location": "Ever Grande City",
+      "imgFileName": "steven"
+    },
+    {
+      "key": "roxanne",
+      "name": "Roxanne",
+      "tag": "Rustboro Gym Ldr",
+      "strategy": "I apply everything I've learned at the Trainer's School to methodically wear down opponents.",
+      "pokemon": "I use Rock-type Pokémon — solid, reliable, and built to last.",
+      "selfintro": "I'm Roxanne. I became a Gym Leader to learn more about Pokémon through battle.",
+      "location": "Rustboro City",
+      "imgFileName": "roxanne"
+    },
+    {
+      "key": "brawly",
+      "name": "Brawly",
+      "tag": "Dewford Gym Ldr",
+      "strategy": "I ride the wave of battle and strike with Fighting-type combos when the moment is right.",
+      "pokemon": "I use Fighting-type Pokémon — trained hard, just like I train in the waves.",
+      "selfintro": "Yo, I'm Brawly! I've been buffeted by the rough waves of Dewford, so I'm tough!",
+      "location": "Dewford Town",
+      "imgFileName": "brawly"
+    },
+    {
+      "key": "flannery",
+      "name": "Flannery",
+      "tag": "Lavaridge Gym Ldr",
+      "strategy": "I come out blazing — my Fire-types hit hard and fast before you can cool down.",
+      "pokemon": "I use Fire-type Pokémon with burning passion and overwhelming heat.",
+      "selfintro": "I'm Flannery! I just took over as Gym Leader and I'm going to battle with everything I've got!",
+      "location": "Lavaridge Town",
+      "imgFileName": "flannery"
+    },
+    {
+      "key": "winona",
+      "name": "Winona",
+      "tag": "Fortree Gym Ldr",
+      "strategy": "My Flying-types dance through the air and attack from angles you'll never anticipate.",
+      "pokemon": "I use Flying-type Pokémon — graceful in the sky, deadly in battle.",
+      "selfintro": "I'm Winona. I have soared the skies with my Pokémon and command the sky itself.",
+      "location": "Fortree City",
+      "imgFileName": "winona"
+    },
+    {
+      "key": "tate",
+      "name": "Tate",
+      "tag": "Mossdeep Gym Ldr",
+      "strategy": "Liza and I think as one — our Psychic-types share a bond no opponent can break.",
+      "pokemon": "I use Psychic-type Pokémon in perfect sync with my twin sister.",
+      "selfintro": "I'm Tate! Together with Liza, our minds and our Pokémon are perfectly united!",
+      "location": "Mossdeep City",
+      "imgFileName": "tate"
+    },
+    {
+      "key": "liza",
+      "name": "Liza",
+      "tag": "Mossdeep Gym Ldr",
+      "strategy": "Tate and I move in unison — our combined psychic power overwhelms every challenger.",
+      "pokemon": "I use Psychic-type Pokémon linked to my twin brother's in perfect harmony.",
+      "selfintro": "I'm Liza! Tate and I are twins, and our bond makes us unbeatable together!",
+      "location": "Mossdeep City",
+      "imgFileName": "liza"
+    },
+    {
+      "key": "juan",
+      "name": "Juan",
+      "tag": "Sootopolis Gym Ldr",
+      "strategy": "My Water-types flow like art — elegant, unpredictable, and impossible to contain.",
+      "pokemon": "I use Water-type Pokémon with the grace and beauty of a master coordinator.",
+      "selfintro": "I am Juan, artiste extraordinaire and user of Water-type Pokémon. Shall we dance?",
+      "location": "Sootopolis City",
+      "imgFileName": "juan"
+    },
+    {
+      "key": "archie",
+      "name": "Archie",
+      "tag": "Team Aqua Boss",
+      "strategy": "I overwhelm with brute force and Water-type power — just like the ocean itself.",
+      "pokemon": "I use Water and Dark-type Pokémon as fierce and relentless as the open sea.",
+      "selfintro": "I'm Archie, leader of Team Aqua! The sea belongs to all living things — I'll prove it!",
+      "location": "Slateport City",
+      "imgFileName": "archie"
+    },
+    {
+      "key": "maxie",
+      "name": "Maxie",
+      "tag": "Team Magma Boss",
+      "strategy": "I use calculated, methodical pressure — my Fire and Ground-types leave no room for error.",
+      "pokemon": "I use Fire and Ground-type Pokémon to expand the land and fuel our ambitions.",
+      "selfintro": "I'm Maxie, the head of Team Magma. Expanding the land will bring prosperity to all humanity.",
+      "location": "Mt. Chimney",
+      "imgFileName": "maxie"
     }
   ]
 }
