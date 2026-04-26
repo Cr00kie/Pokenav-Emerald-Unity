@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 1477672418}
   - component: {fileID: 1477672421}
   - component: {fileID: 1477672420}
+  - component: {fileID: 1477672422}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -291,8 +292,8 @@ MonoBehaviour:
     onClick:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1477672420}
-          m_TargetAssemblyTypeName: SelectMenu, Assembly-CSharp
+        - m_Target: {fileID: 1477672422}
+          m_TargetAssemblyTypeName: PokemonPartyHelper, Assembly-CSharp
           m_MethodName: SetPokemonPartyFromFile
           m_Mode: 1
           m_Arguments:
@@ -332,6 +333,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winkSpeed: 0.12
+--- !u!114 &1477672422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477672416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e05f261ce5247940a7b4a4edf383178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
