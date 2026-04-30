@@ -17,6 +17,7 @@ public class HoennMapMenu : MonoBehaviour
     private VisualElement locationInfoContainer;
     private VisualElement rightTitles;
     private VisualElement returnButton;
+    private VisualElement villageImage;
 
     // texto del pueblo en la ficha
     private Label villageLabel;
@@ -123,6 +124,7 @@ public class HoennMapMenu : MonoBehaviour
         rightTitles = root.Q<VisualElement>("RightTitles");
         returnButton = root.Q<VisualElement>("ReturnButton");
         villageLabel = root.Q<Label>("village");
+        villageImage = root.Q<VisualElement>("villageImage");
 
         // mensajes utiles si algun name no coincide con el uxml
         if (baseContainer == null) Debug.LogError("No se encontro 'Base'.");
@@ -133,6 +135,7 @@ public class HoennMapMenu : MonoBehaviour
         if (rightTitles == null) Debug.LogError("No se encontro 'RightTitles'.");
         if (returnButton == null) Debug.LogError("No se encontro 'ReturnButton'.");
         if (villageLabel == null) Debug.LogError("No se encontro el label 'village'.");
+        if (villageImage == null) Debug.LogError("No se encontro 'villageImage'.");
     }
 
     private void ConfigurePicking()
@@ -151,6 +154,11 @@ public class HoennMapMenu : MonoBehaviour
         if (villageLabel != null)
         {
             villageLabel.pickingMode = PickingMode.Ignore;
+        }
+
+        if (villageImage != null)
+        {
+            villageImage.pickingMode = PickingMode.Ignore;
         }
 
         if (rightTitles != null)
@@ -280,6 +288,9 @@ public class HoennMapMenu : MonoBehaviour
         selectedVillageElement = clickedVillage;
         selectedVillageName = FormatVillageName(clickedVillage.name);
         villageLabel.text = selectedVillageName;
+
+        // actualizamos la imagen usando el nombre exacto del village
+        UpdateVillageImage(clickedVillage.name);
 
         // el seleccionado no parpadea
         StopVillageBlink(clickedVillage);
@@ -582,6 +593,34 @@ public class HoennMapMenu : MonoBehaviour
         village.style.borderRightWidth = 0f;
         village.style.borderBottomWidth = 0f;
         village.style.borderLeftWidth = 0f;
+    }
+
+    private void UpdateVillageImage(string villageResourceName)
+    {
+        if (villageImage == null || string.IsNullOrEmpty(villageResourceName))
+        {
+            return;
+        }
+
+        // probamos primero como sprite
+        Sprite sprite = Resources.Load<Sprite>("CityIMG/" + villageResourceName);
+
+        if (sprite != null)
+        {
+            villageImage.style.backgroundImage = new StyleBackground(sprite);
+            return;
+        }
+
+        // si no existe como sprite, probamos como textura
+        Texture2D texture = Resources.Load<Texture2D>("CityIMG/" + villageResourceName);
+
+        if (texture != null)
+        {
+            villageImage.style.backgroundImage = new StyleBackground(texture);
+            return;
+        }
+
+        Debug.LogWarning("no se encontro imagen para el village: " + villageResourceName);
     }
 
     private string FormatVillageName(string rawName)

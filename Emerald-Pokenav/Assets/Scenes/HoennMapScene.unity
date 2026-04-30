@@ -289,8 +289,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedZoom: 1.5
+  locationInfoTransitionTime: 0.18
+  mapTransitionTime: 0.22
   blinkSpeed: 0.2
-  selectedBorderColor: {r: 0.9924528, g: 0.5182603, b: 0.2153434, a: 1}
+  selectedBorderColor: {r: 1, g: 0.9181342, b: 0.8660377, a: 1}
   selectedBorderWidth: 3
   returnSceneName: MainMenuScene
 --- !u!1660057539 &9223372036854775807
