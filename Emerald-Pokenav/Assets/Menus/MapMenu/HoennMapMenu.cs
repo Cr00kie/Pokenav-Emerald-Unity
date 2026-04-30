@@ -5,10 +5,10 @@ using UnityEngine.UIElements;
 
 public class HoennMapMenu : MonoBehaviour
 {
-    // referencia al uidocument que contiene todo el arbol visual del menu
+    // documento ui del menu
     private UIDocument uiDocument;
 
-    // referencias a los elementos principales del uxml
+    // elementos principales del uxml
     private VisualElement root;
     private VisualElement baseContainer;
     private VisualElement mapViewport;
@@ -18,23 +18,49 @@ public class HoennMapMenu : MonoBehaviour
     private VisualElement rightTitles;
     private VisualElement returnButton;
 
-    // label donde se muestra el nombre del pueblo seleccionado o en hover
+    // texto del pueblo en la ficha
     private Label villageLabel;
 
-    // guarda el nombre del pueblo actualmente seleccionado con click
+    // nombre del pueblo seleccionado
     private string selectedVillageName = string.Empty;
 
-    [Header("Map Zoom")]
-    // nivel de zoom que se aplica al mapa cuando se selecciona un pueblo
+    // village seleccionado
+    private VisualElement selectedVillageElement;
+
+    // villages con hover ahora mismo
+    private HashSet<VisualElement> hoveredVillages = new HashSet<VisualElement>();
+
+    // trabajos activos del parpadeo
+    private Dictionary<VisualElement, IVisualElementScheduledItem> blinkJobs =
+        new Dictionary<VisualElement, IVisualElementScheduledItem>();
+
+    [Header("map zoom")]
+    // cuanto se acerca el mapa al seleccionar un pueblo
     [SerializeField] private float selectedZoom = 1.5f;
 
-    [Header("Scenes")]
-    // nombre de la escena a la que vuelve el boton return
+    [Header("transitions")]
+    // tiempo del panel location info al entrar y salir
+    [SerializeField] private float locationInfoTransitionTime = 0.18f;
+
+    // tiempo del movimiento y zoom del mapa
+    [SerializeField] private float mapTransitionTime = 0.22f;
+
+    [Header("blink")]
+    // velocidad del parpadeo al hacer hover
+    [SerializeField] private float blinkSpeed = 0.12f;
+
+    [Header("selected village")]
+    // color y grosor del borde del seleccionado
+    [SerializeField] private Color selectedBorderColor = Color.white;
+    [SerializeField] private float selectedBorderWidth = 3f;
+
+    [Header("scenes")]
+    // escena a la que vuelve el boton return
     [SerializeField] private string returnSceneName = "MainMenuScene";
 
     private void OnEnable()
     {
-        // obtenemos el uidocument del mismo gameobject
+        // buscamos el documento ui del objeto
         uiDocument = GetComponent<UIDocument>();
 
         if (uiDocument == null)
@@ -46,30 +72,21 @@ public class HoennMapMenu : MonoBehaviour
         // guardamos la raiz del arbol visual
         root = uiDocument.rootVisualElement;
 
-        // buscamos referencias a todos los elementos del uxml
+        // configuracion inicial del menu
         CacheReferences();
-
-        // configuramos que elementos pueden bloquear o recibir input
         ConfigurePicking();
-
-        // configuramos transiciones suaves para el panel de info y el zoom del mapa
         ConfigureTransitions();
-
-        // registramos los eventos de click y hover
         RegisterCallbacks();
-
-        // nos aseguramos de que los paneles de la derecha queden delante visualmente
         BringPanelsToFront();
 
-        // al entrar en la escena, ocultamos la ficha de informacion
+        // dejamos la ficha oculta y el mapa normal al entrar
         HideLocationInfo();
-
-        // y dejamos el mapa sin zoom
         ResetMapZoom();
     }
 
     private void OnDisable()
     {
+        // quitamos callbacks globales
         if (baseContainer != null)
         {
             baseContainer.UnregisterCallback<ClickEvent>(OnBaseClicked);
@@ -80,6 +97,7 @@ public class HoennMapMenu : MonoBehaviour
             returnButton.UnregisterCallback<ClickEvent>(OnReturnClicked);
         }
 
+        // quitamos callbacks de todos los villages
         if (villagesContainer != null)
         {
             foreach (VisualElement village in villagesContainer.Children())
@@ -89,11 +107,14 @@ public class HoennMapMenu : MonoBehaviour
                 village.UnregisterCallback<PointerLeaveEvent>(OnVillagePointerLeave);
             }
         }
+
+        // paramos todos los parpadeos activos
+        StopAllVillageBlink();
     }
 
     private void CacheReferences()
     {
-        // buscamos cada elemento por su name 
+        // buscamos todos los elementos que usaremos desde codigo
         baseContainer = root.Q<VisualElement>("Base");
         mapViewport = root.Q<VisualElement>("MapViewport");
         mapContent = root.Q<VisualElement>("MapContent");
@@ -103,7 +124,7 @@ public class HoennMapMenu : MonoBehaviour
         returnButton = root.Q<VisualElement>("ReturnButton");
         villageLabel = root.Q<Label>("village");
 
-        // comprobaciones
+        // mensajes utiles si algun name no coincide con el uxml
         if (baseContainer == null) Debug.LogError("No se encontro 'Base'.");
         if (mapViewport == null) Debug.LogError("No se encontro 'MapViewport'.");
         if (mapContent == null) Debug.LogError("No se encontro 'MapContent'.");
@@ -111,37 +132,33 @@ public class HoennMapMenu : MonoBehaviour
         if (locationInfoContainer == null) Debug.LogError("No se encontro 'LocationInfo'.");
         if (rightTitles == null) Debug.LogError("No se encontro 'RightTitles'.");
         if (returnButton == null) Debug.LogError("No se encontro 'ReturnButton'.");
-        if (villageLabel == null) Debug.LogError("No se encontro el Label 'village'.");
+        if (villageLabel == null) Debug.LogError("No se encontro el label 'village'.");
     }
 
     private void ConfigurePicking()
     {
-        // el contenedor grande de villages no debe bloquear clicks por si mismo
-        // solo deben recibir clicks sus hijos individuales
+        // estos contenedores no deben bloquear input
         if (villagesContainer != null)
         {
             villagesContainer.pickingMode = PickingMode.Ignore;
         }
 
-        // locationinfo es solo visual, asi que tampoco debe bloquear input
         if (locationInfoContainer != null)
         {
             locationInfoContainer.pickingMode = PickingMode.Ignore;
         }
 
-        // el label de texto tampoco necesita input
         if (villageLabel != null)
         {
             villageLabel.pickingMode = PickingMode.Ignore;
         }
 
-        // el panel derecho como bloque tampoco debe bloquear
         if (rightTitles != null)
         {
             rightTitles.pickingMode = PickingMode.Ignore;
         }
 
-        // el boton return si debe recibir clicks
+        // el boton return si debe poder pulsarse
         if (returnButton != null)
         {
             returnButton.pickingMode = PickingMode.Position;
@@ -150,7 +167,7 @@ public class HoennMapMenu : MonoBehaviour
 
     private void ConfigureTransitions()
     {
-        // configuramos una transicion suave para el translate de locationinfo
+        // esta transicion mueve la ficha al mostrarse y ocultarse
         if (locationInfoContainer != null)
         {
             locationInfoContainer.style.transitionProperty = new StyleList<StylePropertyName>(
@@ -163,12 +180,12 @@ public class HoennMapMenu : MonoBehaviour
             locationInfoContainer.style.transitionDuration = new StyleList<TimeValue>(
                 new List<TimeValue>
                 {
-                    new TimeValue(0.18f, TimeUnit.Second)
+                    new TimeValue(locationInfoTransitionTime, TimeUnit.Second)
                 }
             );
         }
 
-        // configuramos una transicion suave para el desplazamiento y el zoom del mapa
+        // esta transicion suaviza el zoom y el desplazamiento del mapa
         if (mapContent != null)
         {
             mapContent.style.transitionProperty = new StyleList<StylePropertyName>(
@@ -182,8 +199,8 @@ public class HoennMapMenu : MonoBehaviour
             mapContent.style.transitionDuration = new StyleList<TimeValue>(
                 new List<TimeValue>
                 {
-                    new TimeValue(0.22f, TimeUnit.Second),
-                    new TimeValue(0.22f, TimeUnit.Second)
+                    new TimeValue(mapTransitionTime, TimeUnit.Second),
+                    new TimeValue(mapTransitionTime, TimeUnit.Second)
                 }
             );
         }
@@ -191,13 +208,13 @@ public class HoennMapMenu : MonoBehaviour
 
     private void RegisterCallbacks()
     {
-        // si se hace click en la base, se cierra la ficha y se resetea el zoom
+        // click fuera de los pueblos
         if (baseContainer != null)
         {
             baseContainer.RegisterCallback<ClickEvent>(OnBaseClicked);
         }
 
-        // el boton return vuelve a otra escena
+        // click del boton return
         if (returnButton != null)
         {
             returnButton.RegisterCallback<ClickEvent>(OnReturnClicked);
@@ -208,20 +225,22 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // cada pueblo recibe click y hover por separado
+        // cada pueblo tiene click y hover propios
         foreach (VisualElement village in villagesContainer.Children())
         {
             village.pickingMode = PickingMode.Position;
             village.RegisterCallback<ClickEvent>(OnVillageClicked);
             village.RegisterCallback<PointerEnterEvent>(OnVillagePointerEnter);
             village.RegisterCallback<PointerLeaveEvent>(OnVillagePointerLeave);
+
+            // dejamos el estado base preparado
+            ApplyVillageNormalStyle(village);
         }
     }
 
     private void BringPanelsToFront()
     {
-        // traemos el panel derecho y el boton return al frente
-        // para que no queden por debajo de otras capas visuales
+        // estos elementos deben quedar por delante del mapa
         if (rightTitles != null)
         {
             rightTitles.BringToFront();
@@ -235,7 +254,6 @@ public class HoennMapMenu : MonoBehaviour
 
     private void OnVillageClicked(ClickEvent evt)
     {
-        // recuperamos el village que ha sido pulsado
         VisualElement clickedVillage = evt.currentTarget as VisualElement;
 
         if (clickedVillage == null)
@@ -243,26 +261,37 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // evitamos que el click siga subiendo hasta base
+        // evitamos que el click siga hasta base
         evt.StopPropagation();
 
-        // guardamos el nombre del pueblo seleccionado
-        selectedVillageName = FormatVillageName(clickedVillage.name);
+        // si habia otro seleccionado, le quitamos su estado fijo
+        if (selectedVillageElement != null && selectedVillageElement != clickedVillage)
+        {
+            ApplyVillageNormalStyle(selectedVillageElement);
 
-        // actualizamos el texto visible
+            // si el raton sigue encima, vuelve a parpadear
+            if (hoveredVillages.Contains(selectedVillageElement))
+            {
+                StartVillageBlink(selectedVillageElement);
+            }
+        }
+
+        // guardamos la nueva seleccion
+        selectedVillageElement = clickedVillage;
+        selectedVillageName = FormatVillageName(clickedVillage.name);
         villageLabel.text = selectedVillageName;
 
-        // mostramos la ficha de informacion
-        ShowLocationInfo();
+        // el seleccionado no parpadea
+        StopVillageBlink(clickedVillage);
+        ApplyVillageSelectedStyle(clickedVillage);
 
-        // acercamos el mapa al pueblo seleccionado
+        // mostramos la ficha y acercamos el mapa
+        ShowLocationInfo();
         ZoomToVillageCenter(clickedVillage);
     }
 
     private void OnVillagePointerEnter(PointerEnterEvent evt)
     {
-        // cuando el raton entra en un pueblo, mostramos su nombre en la ficha
-        // pero no cambiamos ni el zoom ni la seleccion actual
         VisualElement hoveredVillage = evt.currentTarget as VisualElement;
 
         if (hoveredVillage == null || villageLabel == null)
@@ -270,19 +299,38 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
+        // guardamos este village como hover activo
+        hoveredVillages.Add(hoveredVillage);
+
+        // si no esta seleccionado, parpadea
+        if (hoveredVillage != selectedVillageElement)
+        {
+            StartVillageBlink(hoveredVillage);
+        }
+
+        // en hover mostramos su nombre
         villageLabel.text = FormatVillageName(hoveredVillage.name);
     }
 
     private void OnVillagePointerLeave(PointerLeaveEvent evt)
     {
-        // cuando el raton sale del pueblo, restauramos el texto:
-        // si habia un pueblo seleccionado, vuelve ese nombre
-        // si no habia ninguno, dejamos el texto vacio
-        if (villageLabel == null)
+        VisualElement hoveredVillage = evt.currentTarget as VisualElement;
+
+        if (hoveredVillage == null || villageLabel == null)
         {
             return;
         }
 
+        // deja de contar como hover
+        hoveredVillages.Remove(hoveredVillage);
+
+        // si no era el seleccionado, deja de parpadear
+        if (hoveredVillage != selectedVillageElement)
+        {
+            StopVillageBlink(hoveredVillage);
+        }
+
+        // restauramos el texto correcto
         if (!string.IsNullOrEmpty(selectedVillageName))
         {
             villageLabel.text = selectedVillageName;
@@ -295,19 +343,32 @@ public class HoennMapMenu : MonoBehaviour
 
     private void OnBaseClicked(ClickEvent evt)
     {
-        // click en cualquier parte libre del fondo:
-        // quitamos seleccion, ocultamos la ficha y reseteamos el zoom
+        // quitamos la seleccion actual
+        if (selectedVillageElement != null)
+        {
+            ApplyVillageNormalStyle(selectedVillageElement);
+
+            // si sigue en hover, vuelve al estado de parpadeo
+            if (hoveredVillages.Contains(selectedVillageElement))
+            {
+                StartVillageBlink(selectedVillageElement);
+            }
+
+            selectedVillageElement = null;
+        }
+
         selectedVillageName = string.Empty;
+
+        // ocultamos ficha y reseteamos el mapa
         HideLocationInfo();
         ResetMapZoom();
     }
 
     private void OnReturnClicked(ClickEvent evt)
     {
-        // evitamos que el click del boton se propague a la base
+        // evitamos que el click suba a base
         evt.StopPropagation();
 
-        // si se ha configurado un nombre de escena, cambiamos a ella
         if (!string.IsNullOrEmpty(returnSceneName))
         {
             SceneManager.LoadScene(returnSceneName);
@@ -321,8 +382,7 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // movemos la ficha a su posicion visible
-        // solo tocamos translate, como querias
+        // translate mueve la ficha a su sitio visible
         locationInfoContainer.style.translate = new Translate(
             new Length(0, LengthUnit.Pixel),
             new Length(0, LengthUnit.Percent)
@@ -336,11 +396,9 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // vaciamos el texto de la ficha al ocultarla
         villageLabel.text = string.Empty;
 
-        // movemos la ficha hacia abajo para esconderla
-        // solo tocamos translate
+        // translate baja la ficha para ocultarla
         locationInfoContainer.style.translate = new Translate(
             new Length(0, LengthUnit.Pixel),
             new Length(85, LengthUnit.Percent)
@@ -354,10 +412,8 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // devolvemos el mapa a su escala normal
+        // dejamos el mapa sin zoom ni desplazamiento
         mapContent.style.scale = new Scale(new Vector3(1f, 1f, 1f));
-
-        // y a su posicion original
         mapContent.style.translate = new Translate(
             new Length(0, LengthUnit.Pixel),
             new Length(0, LengthUnit.Pixel)
@@ -371,27 +427,21 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // rect del pueblo dentro del contenedor villages
         Rect villageRect = village.layout;
-
-        // rect del contenedor villages dentro de mapcontent
         Rect villagesRect = villagesContainer.layout;
 
-        // calculamos el centro del pueblo en coordenadas locales de mapcontent
+        // centro del village dentro del mapa
         float villageCenterX = villagesRect.x + villageRect.x + (villageRect.width * 0.5f);
         float villageCenterY = villagesRect.y + villageRect.y + (villageRect.height * 0.5f);
 
-        // punto visible del viewport al que queremos llevar el pueblo
-        // x al centro
-        // y algo mas abajo para que quede mejor encuadrado con la ui de la derecha
+        // punto del viewport donde queremos enfocar
         float viewportCenterX = mapViewport.resolvedStyle.width * 0.5f;
         float viewportCenterY = mapViewport.resolvedStyle.height * 0.7f;
 
-        // aplicamos zoom al mapa
+        // el scale acerca el mapa
         mapContent.style.scale = new Scale(new Vector3(selectedZoom, selectedZoom, 1f));
 
-        // calculamos la traslacion necesaria para llevar el centro del pueblo
-        // al punto visible deseado del viewport
+        // el translate coloca el pueblo en la zona visible deseada
         float translateX = viewportCenterX - (villageCenterX * selectedZoom);
         float translateY = viewportCenterY - (villageCenterY * selectedZoom);
 
@@ -401,9 +451,142 @@ public class HoennMapMenu : MonoBehaviour
         );
     }
 
+    private void StartVillageBlink(VisualElement village)
+    {
+        if (village == null)
+        {
+            return;
+        }
+
+        // el seleccionado no parpadea
+        if (village == selectedVillageElement)
+        {
+            return;
+        }
+
+        // si ya tiene un trabajo activo, no lo repetimos
+        if (blinkJobs.ContainsKey(village))
+        {
+            return;
+        }
+
+        bool isBright = true;
+        ApplyVillageBlinkState(village, isBright);
+
+        // este trabajo alterna dos estados visuales
+        // asi se consigue el efecto de parpadeo
+        IVisualElementScheduledItem blinkJob = village.schedule.Execute(() =>
+        {
+            isBright = !isBright;
+            ApplyVillageBlinkState(village, isBright);
+        }).Every((long)(blinkSpeed * 1000f));
+
+        blinkJobs[village] = blinkJob;
+    }
+
+    private void StopVillageBlink(VisualElement village)
+    {
+        if (village == null)
+        {
+            return;
+        }
+
+        // paramos el trabajo si existia
+        if (blinkJobs.TryGetValue(village, out IVisualElementScheduledItem blinkJob))
+        {
+            blinkJob.Pause();
+            blinkJobs.Remove(village);
+        }
+
+        // si no esta seleccionado, vuelve a su estado normal
+        if (village != selectedVillageElement)
+        {
+            ApplyVillageNormalStyle(village);
+        }
+    }
+
+    private void StopAllVillageBlink()
+    {
+        // paramos todos los trabajos activos
+        foreach (KeyValuePair<VisualElement, IVisualElementScheduledItem> pair in blinkJobs)
+        {
+            pair.Value.Pause();
+
+            if (pair.Key != null)
+            {
+                ApplyVillageNormalStyle(pair.Key);
+            }
+        }
+
+        blinkJobs.Clear();
+        hoveredVillages.Clear();
+        selectedVillageElement = null;
+    }
+
+    private void ApplyVillageBlinkState(VisualElement village, bool isBright)
+    {
+        if (village == null)
+        {
+            return;
+        }
+
+        // alternamos entre un estado mas fuerte y otro mas suave
+        if (isBright)
+        {
+            village.style.unityBackgroundImageTintColor = new StyleColor(new Color(1f, 1f, 1f, 1f));
+            village.style.opacity = 1f;
+        }
+        else
+        {
+            village.style.unityBackgroundImageTintColor = new StyleColor(new Color(1f, 1f, 1f, 0.75f));
+            village.style.opacity = 0.85f;
+        }
+    }
+
+    private void ApplyVillageSelectedStyle(VisualElement village)
+    {
+        if (village == null)
+        {
+            return;
+        }
+
+        // estado fijo del seleccionado
+        village.style.unityBackgroundImageTintColor = new StyleColor(new Color(1f, 1f, 1f, 1f));
+        village.style.opacity = 1f;
+        village.style.scale = new Scale(new Vector3(1.08f, 1.08f, 1f));
+
+        village.style.borderTopWidth = selectedBorderWidth;
+        village.style.borderRightWidth = selectedBorderWidth;
+        village.style.borderBottomWidth = selectedBorderWidth;
+        village.style.borderLeftWidth = selectedBorderWidth;
+
+        village.style.borderTopColor = new StyleColor(selectedBorderColor);
+        village.style.borderRightColor = new StyleColor(selectedBorderColor);
+        village.style.borderBottomColor = new StyleColor(selectedBorderColor);
+        village.style.borderLeftColor = new StyleColor(selectedBorderColor);
+    }
+
+    private void ApplyVillageNormalStyle(VisualElement village)
+    {
+        if (village == null)
+        {
+            return;
+        }
+
+        // estado base sin borde ni animacion
+        village.style.unityBackgroundImageTintColor = new StyleColor(new Color(1f, 1f, 1f, 1f));
+        village.style.opacity = 1f;
+        village.style.scale = new Scale(new Vector3(1f, 1f, 1f));
+
+        village.style.borderTopWidth = 0f;
+        village.style.borderRightWidth = 0f;
+        village.style.borderBottomWidth = 0f;
+        village.style.borderLeftWidth = 0f;
+    }
+
     private string FormatVillageName(string rawName)
     {
-        // convierte nombres tipo mossdeep_city en mossdeep city
+        // cambiamos guiones bajos por espacios
         if (string.IsNullOrEmpty(rawName))
         {
             return string.Empty;
