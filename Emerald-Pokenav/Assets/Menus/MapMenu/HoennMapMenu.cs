@@ -83,6 +83,7 @@ public class HoennMapMenu : MonoBehaviour
         // dejamos la ficha oculta y el mapa normal al entrar
         HideLocationInfo();
         ResetMapZoom();
+        ClearVillageImage();
     }
 
     private void OnDisable()
@@ -321,6 +322,9 @@ public class HoennMapMenu : MonoBehaviour
 
         // en hover mostramos su nombre
         villageLabel.text = FormatVillageName(hoveredVillage.name);
+
+        // en hover cambiamos tambien la imagen
+        UpdateVillageImage(hoveredVillage.name);
     }
 
     private void OnVillagePointerLeave(PointerLeaveEvent evt)
@@ -341,15 +345,27 @@ public class HoennMapMenu : MonoBehaviour
             StopVillageBlink(hoveredVillage);
         }
 
-        // restauramos el texto correcto
-        if (!string.IsNullOrEmpty(selectedVillageName))
+        // restauramos texto e imagen segun el estado actual
+        if (!string.IsNullOrEmpty(selectedVillageName) && selectedVillageElement != null)
         {
             villageLabel.text = selectedVillageName;
+            UpdateVillageImage(selectedVillageElement.name);
         }
         else
         {
             villageLabel.text = string.Empty;
+            ClearVillageImage();
         }
+    }
+
+    private void ClearVillageImage()
+    {
+        if (villageImage == null)
+        {
+            return;
+        }
+
+        villageImage.style.backgroundImage = StyleKeyword.None;
     }
 
     private void OnBaseClicked(ClickEvent evt)
@@ -369,6 +385,9 @@ public class HoennMapMenu : MonoBehaviour
         }
 
         selectedVillageName = string.Empty;
+
+        // limpiamos la imagen
+        ClearVillageImage();
 
         // ocultamos ficha y reseteamos el mapa
         HideLocationInfo();
