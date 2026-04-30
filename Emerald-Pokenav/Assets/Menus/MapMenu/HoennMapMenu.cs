@@ -621,21 +621,12 @@ public class HoennMapMenu : MonoBehaviour
             return;
         }
 
-        // probamos primero como sprite
+        // los cargamos como sprite
         Sprite sprite = Resources.Load<Sprite>("CityIMG/" + villageResourceName);
 
         if (sprite != null)
         {
             villageImage.style.backgroundImage = new StyleBackground(sprite);
-            return;
-        }
-
-        // si no existe como sprite, probamos como textura
-        Texture2D texture = Resources.Load<Texture2D>("CityIMG/" + villageResourceName);
-
-        if (texture != null)
-        {
-            villageImage.style.backgroundImage = new StyleBackground(texture);
             return;
         }
 
