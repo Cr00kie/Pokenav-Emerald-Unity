@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MatchCallScene.unity
     guid: 5029a883d00e0664e9291adce3603250
+  - enabled: 1
+    path: Assets/Scenes/HoennMapScene.unity
+    guid: bd0390cd5cd568040a40b9c10b726c56
   m_configObjects: {}
