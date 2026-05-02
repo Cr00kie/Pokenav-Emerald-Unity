@@ -2,4 +2,6 @@ Realizado por Chenlinjia Yi y Adrián Isasi.
 
 Este proyecto es una recreación de los menús de la Pokenav de Pokémon Esmeralda (2004).
 
+Versión de Unity: 2022.3.53f1
+
 Link al repositorio: https://github.com/Cr00kie/Pokenav-Emerald-Unity.git
